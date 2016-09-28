@@ -4,12 +4,12 @@ angular
     .module("finance.exchange")
     .controller("ExchangeEditController", ExchangeEditController);
 
-function ExchangeEditController(Document, $stateParams, $state) {
+function ExchangeEditController(ExchangeDocument, $stateParams, $state) {
     var vm = this;
 
 
-    Document.get({id: $stateParams.id}, function (data) {
-        vm.exchange = new Document(data);
+    ExchangeDocument.get({id: $stateParams.id}, function (data) {
+        vm.exchange = new ExchangeDocument(data);
     }, function () {
         vm.errors = [{message: "Could not retrieve exchange with ID " + $stateParams.id}];
     });

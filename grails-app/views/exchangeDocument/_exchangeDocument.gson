@@ -1,0 +1,7 @@
+import finance.ExchangeDocument
+
+model {
+	ExchangeDocument exchangeDocument
+}
+
+json g.render(exchangeDocument)

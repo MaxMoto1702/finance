@@ -1,17 +1,15 @@
 package finance
 
-class Document {
+class ExpenseDocument {
 
-    DocumentType type
+    Date date
     String company
     Account account
-    Date date
     BigDecimal amount
     String description
-    Set rows
 
     static hasMany = [
-            rows: DocumentRow
+            rows: ExpenseDocumentRow
     ]
 
     static constraints = {

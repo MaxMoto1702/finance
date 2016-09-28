@@ -1,0 +1,7 @@
+import finance.ExpenseDocument
+
+model {
+	ExpenseDocument expenseDocument
+}
+
+json g.render(expenseDocument)

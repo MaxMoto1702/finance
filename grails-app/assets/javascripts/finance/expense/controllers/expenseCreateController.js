@@ -4,14 +4,13 @@ angular
     .module("finance.expense")
     .controller("ExpenseCreateController", ExpenseCreateController);
 
-function ExpenseCreateController(Document, Account, $state) {
+function ExpenseCreateController(ExpenseDocument, Account, $state) {
 
     var vm = this;
 
     vm.accounts = Account.list();
 
-    vm.expense = new Document();
-    vm.expense.type = 'EXPENSE';
+    vm.expense = new ExpenseDocument();
 
     vm.saveExpense = function () {
         vm.errors = undefined;

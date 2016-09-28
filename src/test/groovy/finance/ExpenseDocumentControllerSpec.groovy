@@ -4,9 +4,9 @@ import grails.test.mixin.*
 import spock.lang.*
 import static org.springframework.http.HttpStatus.*
 
-@TestFor(DocumentController)
-@Mock(Document)
-class DocumentControllerSpec extends Specification {
+@TestFor(ExpenseDocumentController)
+@Mock(ExpenseDocument)
+class ExpenseDocumentControllerSpec extends Specification {
 
 //    def populateValidParams(params) {
 //        assert params != null
@@ -31,9 +31,9 @@ class DocumentControllerSpec extends Specification {
 //        when:"The save action is executed with an invalid instance"
 //            request.contentType = JSON_CONTENT_TYPE
 //            request.method = 'POST'
-//            def document = new Document()
-//            document.validate()
-//            controller.save(document)
+//            def expenseDocument = new ExpenseDocument()
+//            expenseDocument.validate()
+//            controller.save(expenseDocument)
 //
 //        then:"The create view is rendered again with the correct model"
 //            response.status == UNPROCESSABLE_ENTITY.value()
@@ -42,12 +42,12 @@ class DocumentControllerSpec extends Specification {
 //        when:"The save action is executed with a valid instance"
 //            response.reset()
 //            populateValidParams(params)
-//            document = new Document(params)
+//            expenseDocument = new ExpenseDocument(params)
 //
-//            controller.save(document)
+//            controller.save(expenseDocument)
 //
 //        then:"A redirect is issued to the show action"
-//            Document.count() == 1
+//            ExpenseDocument.count() == 1
 //            response.status == CREATED.value()
 //            response.json
 //    }
@@ -62,11 +62,11 @@ class DocumentControllerSpec extends Specification {
 //        when:"A domain instance is passed to the show action"
 //            populateValidParams(params)
 //            response.reset()
-//            def document= new Document(params).save()
-//            controller.show(document)
+//            def expenseDocument= new ExpenseDocument(params).save()
+//            controller.show(expenseDocument)
 //
 //        then:"A model is populated containing the domain instance"
-//            document!= null
+//            expenseDocument!= null
 //            response.status == OK.value()
 //            response.json
 //    }
@@ -82,9 +82,9 @@ class DocumentControllerSpec extends Specification {
 //
 //        when:"An invalid domain instance is passed to the update action"
 //            response.reset()
-//            def document= new Document()
-//            document.validate()
-//            controller.update(document)
+//            def expenseDocument= new ExpenseDocument()
+//            expenseDocument.validate()
+//            controller.update(expenseDocument)
 //
 //        then:"The edit view is rendered again with the invalid instance"
 //            response.status == UNPROCESSABLE_ENTITY.value()
@@ -93,13 +93,13 @@ class DocumentControllerSpec extends Specification {
 //        when:"A valid domain instance is passed to the update action"
 //            response.reset()
 //            populateValidParams(params)
-//            document= new Document(params).save(flush: true)
-//            controller.update(document)
+//            expenseDocument= new ExpenseDocument(params).save(flush: true)
+//            controller.update(expenseDocument)
 //
 //        then:"A redirect is issued to the show action"
-//            document!= null
+//            expenseDocument!= null
 //            response.status == OK.value()
-//            response.json.id == document.id
+//            response.json.id == expenseDocument.id
 //    }
 //
 //    void "Test that the delete action deletes an instance if it exists"() {
@@ -115,16 +115,16 @@ class DocumentControllerSpec extends Specification {
 //        when:"A domain instance is created"
 //            response.reset()
 //            populateValidParams(params)
-//            def document= new Document(params).save(flush: true)
+//            def expenseDocument= new ExpenseDocument(params).save(flush: true)
 //
 //        then:"It exists"
-//            Document.count() == 1
+//            ExpenseDocument.count() == 1
 //
 //        when:"The domain instance is passed to the delete action"
-//            controller.delete(document)
+//            controller.delete(expenseDocument)
 //
 //        then:"The instance is deleted"
-//            Document.count() == 0
+//            ExpenseDocument.count() == 0
 //            response.status == NO_CONTENT.value()
 //
 //    }

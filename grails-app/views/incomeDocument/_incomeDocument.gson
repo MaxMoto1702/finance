@@ -1,0 +1,7 @@
+import finance.IncomeDocument
+
+model {
+	IncomeDocument incomeDocument
+}
+
+json g.render(incomeDocument)

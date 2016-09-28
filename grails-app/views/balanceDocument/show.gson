@@ -1,0 +1,7 @@
+import finance.BalanceDocument
+
+model {
+	BalanceDocument balanceDocument
+}
+
+json tmpl.balanceDocument(balanceDocument)

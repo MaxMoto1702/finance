@@ -1,0 +1,8 @@
+import finance.ExchangeDocument
+
+model {
+	Iterable<ExchangeDocument> exchangeDocumentList
+}
+
+json tmpl.exchangeDocument(exchangeDocumentList ?: [])
+

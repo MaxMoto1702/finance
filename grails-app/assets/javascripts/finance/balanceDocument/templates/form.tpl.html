@@ -1,0 +1,57 @@
+<fieldset class="row">
+    <div class="form-group col-md-6">
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date" class="form-control" ng-model="vm.balanceDocument.date"/>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="amount">Amount</label>
+        <input id="amount" name="amount" type="number" class="form-control" ng-model="vm.balanceDocument.amount"/>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="description">Description</label>
+        <input id="description" name="description" type="text" class="form-control" ng-model="vm.balanceDocument.description"/>
+    </div>
+    <!-- /.form-group.col-md-12 -->
+
+    <div class="col-md-12">
+        <h3>
+            Details
+            <a href="javascript:;" class="btn btn-default btn-sm" style="float: right">
+                <i class="fa fa-plus" aria-hidden="true"></i> Add
+            </a>
+        </h3>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--<tr ng-repeat="incomeRow in vm.income.rows">-->
+                <!--<td>{{row.item}}</td>-->
+                <!--<td>{{row.amount}}</td>-->
+                <!--</tr>-->
+                <tr>
+                    <td>Item #1</td>
+                    <td>10.00</td>
+                </tr>
+                <tr>
+                    <td>Item #2</td>
+                    <td>20.00</td>
+                </tr>
+                <tr>
+                    <td>Item #3</td>
+                    <td>30.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+
+    </div>
+    <!-- /.col-md-12 -->
+</fieldset>
+<!-- /.row -->

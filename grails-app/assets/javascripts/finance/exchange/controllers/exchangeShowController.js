@@ -4,10 +4,10 @@ angular
     .module("finance.exchange")
     .controller("ExchangeShowController", ExchangeShowController);
 
-function ExchangeShowController(Document, $stateParams, $state) {
+function ExchangeShowController(ExchangeDocument, $stateParams, $state) {
     var vm = this;
 
-    Document.get({id: $stateParams.id}, function (data) {
+    ExchangeDocument.get({id: $stateParams.id}, function (data) {
         vm.exchange = new Document(data);
     }, function () {
         $state.go('exchange.list');
