@@ -1,0 +1,19 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+apply plugin: 'war'
+
+war {
+    baseName = 'reports'
+    webAppDirName = "$buildDir/reports/tests/test"
+    destinationDir = file("$buildDir/reports")
+}
