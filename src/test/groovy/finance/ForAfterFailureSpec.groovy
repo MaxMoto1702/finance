@@ -20,6 +20,7 @@ class ForAfterFailureSpec extends Specification {
     }
 
     void "broken test for after_failure"() {
-        throw new RuntimeException('For after_failure')
+        expect:
+            true == false
     }
 }
