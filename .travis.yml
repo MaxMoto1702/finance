@@ -14,7 +14,7 @@ before_install:
 after_failure:
     - ./gradlew -b reports.gradle build
     - scp build/reports/reports.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
-after_script:
+after_success:
     - ./gradlew -b doc.gradle build
     - ./gradlew -b reports.gradle build
 before_deploy:
