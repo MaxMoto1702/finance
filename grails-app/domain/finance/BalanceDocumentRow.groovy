@@ -2,7 +2,7 @@ package finance
 
 class BalanceDocumentRow {
 
-    Account account
+    String accountName
     BigDecimal amount
 
     static belongsTo = [

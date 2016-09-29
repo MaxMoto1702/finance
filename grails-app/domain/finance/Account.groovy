@@ -13,5 +13,6 @@ class Account {
     ]
 
     static constraints = {
+        balance nullable: true
     }
 }

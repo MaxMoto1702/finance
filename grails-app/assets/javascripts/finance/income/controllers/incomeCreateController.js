@@ -4,13 +4,25 @@ angular
     .module("finance.income")
     .controller("IncomeCreateController", IncomeCreateController);
 
-function IncomeCreateController(IncomeDocument, Account, $state) {
+function IncomeCreateController(IncomeDocument, Account, $uibModal, $state) {
 
     var vm = this;
 
     vm.accounts = Account.list();
 
     vm.income = new IncomeDocument();
+
+    vm.addRow = function () {
+        $uibModal
+            .open({
+                component: 'IncomeDocumentRowCreateModalComponent',
+                resolve: {}
+            }).result
+            .then(function (newRow) {
+                if (vm.income.rows === undefined) vm.income.rows = [];
+                vm.income.rows.push(newRow);
+            });
+    };
 
     vm.saveIncome = function () {
         vm.errors = undefined;

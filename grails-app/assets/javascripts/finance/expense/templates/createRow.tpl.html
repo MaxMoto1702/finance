@@ -1,0 +1,19 @@
+<form id="addExpenseDocumentRow" ng-submit="vm.save()">
+    <div class="modal-title"></div>
+    <div class="modal-body">
+        <fieldset>
+            <div class="form-group">
+                <label for="product">Product</label>
+                <input id="product" type="text" class="form-control" ng-model="vm.row.product">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input id="amount" type="number" class="form-control" ng-model="vm.row.amount">
+            </div>
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button id="submitAddExpenseDocumentRow" type="submit" class="btn btn-primary">Save</button>
+        <button id="cancelAddExpenseDocumentRow" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</form>
