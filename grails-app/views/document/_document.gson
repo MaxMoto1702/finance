@@ -1,7 +1,0 @@
-import finance.Document
-
-model {
-	Document document
-}
-
-json g.render(document)
