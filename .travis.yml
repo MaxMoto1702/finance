@@ -16,10 +16,12 @@ after_failure:
     - scp build/reports/reports.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
 after_script:
     - ./gradlew -b doc.gradle build
+    - ./gradlew -b reports.gradle build
 before_deploy:
     - mkdir -p build/deploy
     - cp build/libs/finance-0.1.war build/deploy/finance.war
     - cp build/asciidoc/asciidoc.war build/deploy/finance-documentation.war
+    - cp build/reports/reports.war build/deploy/finance-reports.war
 deploy:
     provider: script
     skip_cleanup: true
