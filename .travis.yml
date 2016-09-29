@@ -14,16 +14,16 @@ before_install:
 after_failure:
     - ./gradlew -b reports.gradle build
     - scp build/reports/reports.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
-#after_script:
-#    - ./gradlew build
-#before_deploy:
-#    - eval "$(ssh-agent -s)"
-#    - chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
-#    - ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
+after_script:
+    - ./gradlew -b doc.gradle build
+before_deploy:
+    - mkdir -p build/deploy
+    - cp build/libs/finance-0.1.war build/deploy/finance.war
+    - cp build/asciidoc/asciidoc.war build/deploy/finance-documentation.war
 deploy:
     provider: script
     skip_cleanup: true
-    script: scp build/libs/finance-0.1.war deployer@serebryanskiy.site:~/tomcat8/finance.war && ./gradlew -b doc.gradle build && scp build/asciidoc/asciidoc.war deployer@serebryanskiy.site:~/tomcat8/finance-documentation.war
+    script: scp build/libs/* deployer@serebryanskiy.site:~/tomcat8/
     on:
         branch: dev
 #        branch: master
