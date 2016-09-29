@@ -41,86 +41,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!--<tr ng-repeat="exchange in vm.exchangeList"-->
-                    <!--ng-click="vm.go('exchange.show', {id: exchange.id})">-->
-                    <!--<td>{{exchange.date}}</td>-->
-                    <!--<td>{{exchange.from.name}}</td>-->
-                    <!--<td>{{exchange.to.name}}</td>-->
-                    <!--<td>{{exchange.amount}}</td>-->
-                    <!--<td>{{exchange.description}}</td>-->
-                    <!--<td><i class="fa" ng-class="{'fa-lock': exchange.closeDate != null, 'fa-unlock':  exchange.closeDate == null}" aria-hidden="true"></i></td>-->
-                    <!--</tr>-->
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-01</td>
-                        <td>Account #1</td>
-                        <td>Account #11</td>
-                        <td>100.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-lock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-02</td>
-                        <td>Account #2</td>
-                        <td>Account #12</td>
-                        <td>200.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-lock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-03</td>
-                        <td>Account #3</td>
-                        <td>Account #13</td>
-                        <td>300.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-lock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-04</td>
-                        <td>Account #4</td>
-                        <td>Account #14</td>
-                        <td>400.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-unlock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-05</td>
-                        <td>Account #5</td>
-                        <td>Account #15</td>
-                        <td>500.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-unlock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-06</td>
-                        <td>Account #6</td>
-                        <td>Account #16</td>
-                        <td>600.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-unlock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-07</td>
-                        <td>Account #7</td>
-                        <td>Account #17</td>
-                        <td>700.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-unlock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-08</td>
-                        <td>Account #8</td>
-                        <td>Account #18</td>
-                        <td>800.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-unlock" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ng-click="vm.go('exchange.show', {id: ''})">
-                        <td>2016-09-09</td>
-                        <td>Account #9</td>
-                        <td>Account #19</td>
-                        <td>900.00</td>
-                        <td>exchange</td>
-                        <td><i class="fa fa-unlock" aria-hidden="true"></i></td>
+                    <tr ng-repeat="exchange in vm.exchangeList"
+                        ng-click="vm.go('exchange.show', {id: exchange.id})">
+                        <td>{{exchange.date | date : 'yyyy-MM-dd'}}</td>
+                        <td>{{exchange.sourceAccount.name}}</td>
+                        <td>{{exchange.targetAccount.name}}</td>
+                        <td>{{exchange.amount}}</td>
+                        <td>{{exchange.description}}</td>
+                        <td><i class="fa"
+                               ng-class="{'fa-lock': exchange.closeDate != null, 'fa-unlock':  exchange.closeDate == null}"
+                               aria-hidden="true"></i></td>
                     </tr>
                     </tbody>
                 </table>

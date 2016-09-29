@@ -13,11 +13,40 @@ function ExpenseShowController(ExpenseDocument, $stateParams, $state) {
         $state.go('expense.list');
     });
 
+    vm.process = function () {
+        vm.errors = undefined;
+        vm.expense.$process(function () {}, function (response) {
+            var data = response.data;
+            if (data.hasOwnProperty('message')) {
+                vm.errors = [data];
+            } else {
+                vm.errors = data._embedded.errors;
+            }
+        });
+    };
+
+    vm.rollback = function () {
+        vm.errors = undefined;
+        vm.expense.$rollback(function () {}, function (response) {
+            var data = response.data;
+            if (data.hasOwnProperty('message')) {
+                vm.errors = [data];
+            } else {
+                vm.errors = data._embedded.errors;
+            }
+        });
+    };
+
     vm.delete = function () {
         vm.expense.$delete(function () {
             $state.go('expense.list');
-        }, function () {
-            //on error
+        }, function (response) {
+            var data = response.data;
+            if (data.hasOwnProperty('message')) {
+                vm.errors = [data];
+            } else {
+                vm.errors = data._embedded.errors;
+            }
         });
     };
 

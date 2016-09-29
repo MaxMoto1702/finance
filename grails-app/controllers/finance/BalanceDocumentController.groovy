@@ -1,5 +1,7 @@
 package finance
 
+import java.beans.Transient
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -68,5 +70,16 @@ class BalanceDocumentController {
         balanceDocument.delete flush:true
 
         render status: NO_CONTENT
+    }
+
+    @Transactional
+    def process(BalanceDocument balanceDocument) {
+        throw new RuntimeException("Process document not implemented")
+//        respond balanceDocument, [status: OK, view:"show"]
+    }
+
+    @Transactional
+    def rollback(BalanceDocument balanceDocument) {
+        throw new RuntimeException("Rollback document not implemented")
     }
 }

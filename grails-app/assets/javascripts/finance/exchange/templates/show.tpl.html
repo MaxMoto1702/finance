@@ -27,12 +27,22 @@
     <!-- /.row -->
 
     <div class="row">
+        <div class="alert alert-danger alert-dismissable"
+             role="alert"
+             ng-if="vm.errors"
+             ng-repeat="error in vm.errors">
+            {{error.message}}
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
         <div class="col-lg-12">
-            <form ng-submit="vm.delete()">
+            <form ng-submit="vm.process()">
                 <fieldset class="row">
                     <div class="form-group col-md-6">
                         <label for="date">Date</label>
-                        <div id="date" class="form-control-static">{{vm.exchange.date}}</div>
+                        <div id="date" class="form-control-static">{{vm.exchange.date | date : 'yyyy-MM-dd'}}</div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="amount">Amount</label>
@@ -40,11 +50,11 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="from">From</label>
-                        <div id="from" class="form-control-static">{{vm.exchange.from}}</div>
+                        <div id="from" class="form-control-static">{{vm.exchange.sourceAccount.name}}</div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="to">To</label>
-                        <div id="to" class="form-control-static">{{vm.exchange.to}}</div>
+                        <div id="to" class="form-control-static">{{vm.exchange.targetAccount.name}}</div>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="description">Description</label>
@@ -56,9 +66,9 @@
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
                 <a class="edit btn btn-default" ui-sref="exchange.edit({id: vm.exchange.id})">Edit</a>
-                <button class="delete btn btn-danger" type="submit" onclick="return confirm('Are you sure?');">
-                    Delete
-                </button>
+                <button class="delete btn btn-default" type="submit">Process</button>
+                <button class="delete btn btn-default" type="button" ng-click="vm.rollback()">Rollback</button>
+                <button class="delete btn btn-danger" type="button" ng-click="vm.delete()">Delete</button>
                 <a ui-sref="exchange.list" class="btn btn-default">Close</a>
                 <!--</div>-->
                 <!-- /.panel-body -->

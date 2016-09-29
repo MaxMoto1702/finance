@@ -5,11 +5,11 @@ model {
     Account account
 }
 
-//json tmpl.account(account)
-json {
-    id account.id
-    name account.name
-    balance account.balance, { Balance balance ->
-        amount balance.amount
-    }
-}
+json tmpl.account(account)
+//json {
+//    id account.id
+//    name account.name
+//    balance account.balance, { Balance balance ->
+//        amount balance.amount
+//    }
+//}

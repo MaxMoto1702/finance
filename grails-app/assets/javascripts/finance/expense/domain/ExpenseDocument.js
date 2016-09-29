@@ -7,12 +7,14 @@ angular
 
 function ExpenseDocument($resource) {
     var ExpenseDocument = $resource(
-        "expenseDocument/:id",
+        "expenseDocument/:id/:action",
         {"id": "@id"},
         {
             "update": {method: "PUT"},
             "query": {method: "GET", isArray: true},
-            "get": {method: 'GET'}
+            "get": {method: 'GET'},
+            "process": {method: "POST", params: {action: 'process'}},
+            "rollback": {method: "POST", params: {action: 'rollback'}}
         }
     );
 

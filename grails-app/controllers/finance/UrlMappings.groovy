@@ -10,6 +10,8 @@ class UrlMappings {
         delete "/$controller/$id(.$format)?"(action:"delete")
 //        patch "/$controller/$id(.$format)?"(action:"patch")
 
+        post "/$controller/$id/$action(.$format)?"()
+
         "/"(view: '/index')
         "500"(view: '/error')
         "404"(view: '/notFound')

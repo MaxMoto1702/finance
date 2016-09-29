@@ -69,4 +69,15 @@ class IncomeDocumentController {
 
         render status: NO_CONTENT
     }
+
+    @Transactional
+    def process(BalanceDocument balanceDocument) {
+        throw new RuntimeException("Process document not implemented")
+//        respond balanceDocument, [status: OK, view:"show"]
+    }
+
+    @Transactional
+    def rollback(BalanceDocument balanceDocument) {
+        throw new RuntimeException("Rollback document not implemented")
+    }
 }
