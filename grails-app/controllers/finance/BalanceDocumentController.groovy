@@ -8,6 +8,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class BalanceDocumentController {
 
+    def balanceDocumentService
+
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -28,13 +30,15 @@ class BalanceDocumentController {
             return
         }
 
+        balanceDocumentService.save balanceDocument
+
         if (balanceDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond balanceDocument.errors, view:'create', status: UNPROCESSABLE_ENTITY
             return
         }
 
-        balanceDocument.save flush:true
+//        balanceDocument.save flush:true
 
         respond balanceDocument, [status: CREATED, view:"show"]
     }
@@ -67,19 +71,55 @@ class BalanceDocumentController {
             return
         }
 
-        balanceDocument.delete flush:true
+        balanceDocumentService.delete balanceDocument
+//        balanceDocument.delete flush:true
+
+        if (balanceDocument.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond balanceDocument.errors, status: FAILED_DEPENDENCY
+            return
+        }
 
         render status: NO_CONTENT
     }
 
     @Transactional
     def process(BalanceDocument balanceDocument) {
-        throw new RuntimeException("Process document not implemented")
-//        respond balanceDocument, [status: OK, view:"show"]
+
+        if (balanceDocument == null) {
+            transactionStatus.setRollbackOnly()
+            render status: NOT_FOUND
+            return
+        }
+
+        balanceDocumentService.process(balanceDocument)
+
+        if (balanceDocument.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond balanceDocument.errors, view:'edit', status: METHOD_NOT_ALLOWED
+            return
+        }
+
+        render status: NO_CONTENT
     }
 
     @Transactional
     def rollback(BalanceDocument balanceDocument) {
-        throw new RuntimeException("Rollback document not implemented")
+
+        if (balanceDocument == null) {
+            transactionStatus.setRollbackOnly()
+            render status: NOT_FOUND
+            return
+        }
+
+        balanceDocumentService.rollback balanceDocument
+
+        if (balanceDocument.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond balanceDocument.errors, status: FAILED_DEPENDENCY
+            return
+        }
+
+        render status: NO_CONTENT
     }
 }

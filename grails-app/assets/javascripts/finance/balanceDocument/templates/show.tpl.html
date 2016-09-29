@@ -27,12 +27,15 @@
     <!-- /.row -->
 
     <div class="row">
-        <div class="alert alert-danger alert-dismissable"
-             role="alert"
-             ng-if="vm.errors"
-             ng-repeat="error in vm.errors">
-            {{error.message}}
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissable"
+                 role="alert"
+                 ng-if="vm.errors"
+                 ng-repeat="error in vm.errors">
+                {{error.message}}
+            </div>
         </div>
+
     </div>
     <!-- /.row -->
 

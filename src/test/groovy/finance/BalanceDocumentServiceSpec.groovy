@@ -4,33 +4,16 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
+import java.time.Period
+
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(BalanceDocumentService)
-@Mock([Account, BalanceDocument, BalanceDocumentRow, Operation])
+@Mock([Account, Balance, BalanceDocument, BalanceDocumentRow, Operation, AccountService])
 class BalanceDocumentServiceSpec extends Specification {
 
     def setup() {
-//        def incomeDocument = new BalanceDocument(
-//                account: account,
-//                company: 'test company',
-//                date: new Date(),
-//                amount: 1000.00,
-//                description: 'test income'
-//        )
-//        incomeDocument.addToRows(new BalanceDocumentRow(product: 'test income product', amount: 1000.00))
-//        if (incomeDocument.validate()) incomeDocument.save(flush: true) else println(incomeDocument.errors)
-//
-//        def expenseDocument = new BalanceDocument(
-//                account: account,
-//                company: 'test company',
-//                date: new Date(),
-//                amount: 1000.00,
-//                description: 'test expense'
-//        )
-//        expenseDocument.addToRows(new BalanceDocumentRow(product: 'test expense product', amount: 500.00))
-//        if (expenseDocument.validate()) expenseDocument.save(flush: true) else println(expenseDocument.errors)
     }
 
     def cleanup() {
@@ -38,10 +21,7 @@ class BalanceDocumentServiceSpec extends Specification {
 
     void "test save document"() {
         given:
-        def document = new BalanceDocument(
-                date: new Date(),
-                description: 'test'
-        )
+        def document = new BalanceDocument(date: new Date(), description: 'test')
         document.addToRows(new BalanceDocumentRow(accountName: 'Account #1', amount: 500.00))
         document.addToRows(new BalanceDocumentRow(accountName: 'Account #2', amount: 250.00))
 
@@ -52,27 +32,46 @@ class BalanceDocumentServiceSpec extends Specification {
         BalanceDocument.findByDescription('test')?.amount == 750.00
     }
 
-//    void "test processing income document"() {
+    void "test process balance document"() {
+        given:
+        def document = new BalanceDocument(date: new Date(), amount: 1000.00, description: 'test process')
+        document.addToRows(new BalanceDocumentRow(accountName: 'test process', amount: 1000.00))
+        if (!document.save(flush: true)) println(document.errors)
+
+        when:
+        service.process(document)
+
+        then:
+        Account.countByName('test process') == 1
+        Account.findByName('test process')?.balance?.amount == 1000.00
+    }
+
+    void "test rollback balance document"() {
+        given:
+        def account = new Account(name: 'test rollback')
+        def document = new BalanceDocument(date: new Date(), description: 'test')
+        document.addToRows(new BalanceDocumentRow(accountName: 'Account #1', amount: 500.00, account: account))
+        if (!document.save(flush: true)) println(document.errors)
+
+        when:
+        service.rollback(document)
+
+        then:
+        Account.countByName('test rollback') == 0
+    }
+
+//    void "test deny rollback balance document"() {
 //        given:
-//        def document = Document.findByDescription('test income')
+//        def account = new Account(name: 'test deny rollback')
+//        def operation = new Operation(product: 'test income', amount: 1000.00, account: account, type: OperationType.INCOME, period: Period.ofYears(2016), date: new Date()).save flush: true
+//        def document = new BalanceDocument(date: new Date(), description: 'test')
+//        document.addToRows(new BalanceDocumentRow(accountName: 'Account #1', amount: 500.00, account: account))
+//        if (!document.save(flush: true)) println(document.errors)
 //
 //        when:
-//        service.processing(document)
+//        service.rollback(document)
 //
 //        then:
-//        Operation.countByProduct('test income product') == 1
-//        Operation.findByProduct('test income product').amount == 1000.00
-//    }
-//
-//    void "test processing expense document"() {
-//        given:
-//        def document = Document.findByDescription('test expense')
-//
-//        when:
-//        service.processing(document)
-//
-//        then:
-//        Operation.countByProduct('test expense product') == 1
-//        Operation.findByProduct('test expense product').amount == 500.00
+//        Account.countByName('test deny rollback') == 1
 //    }
 }
