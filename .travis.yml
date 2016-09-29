@@ -9,8 +9,8 @@ before_install:
     - openssl aes-256-cbc -K $encrypted_0e03e4d6fca5_key -iv $encrypted_0e03e4d6fca5_iv -in deploy_rsa.enc -out deploy_rsa -d
     - ls $TRAVIS_BUILD_DIR
 after_failure:
-    - ./gradlew -b doc.gradle build
-    - scp build/asciidoc/asciidoc.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
+    - ./gradlew -b reports.gradle build
+    - scp build/reports/reports.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
 #after_script:
 #    - ./gradlew build
 before_deploy:
