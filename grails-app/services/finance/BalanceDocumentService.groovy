@@ -31,6 +31,9 @@ class BalanceDocumentService {
     BalanceDocument save(BalanceDocument document) {
         def amount = document.rows.sum { BalanceDocumentRow row -> row.amount }
         document.amount = amount as BigDecimal
-        if (document.validate()) document.save flush: true else log.error(document.errors)
+        if (document.validate())
+            document.save flush: true
+        else
+            log.error("${document.errors}")
     }
 }

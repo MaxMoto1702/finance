@@ -21,6 +21,8 @@ function IncomeCreateController(IncomeDocument, Account, $uibModal, $state) {
             .then(function (newRow) {
                 if (vm.income.rows === undefined) vm.income.rows = [];
                 vm.income.rows.push(newRow);
+                if (vm.income.amount === undefined) vm.income.amount = 0;
+                vm.income.amount += newRow.amount;
             });
     };
 

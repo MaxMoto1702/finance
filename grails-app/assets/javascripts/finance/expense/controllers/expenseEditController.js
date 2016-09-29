@@ -15,6 +15,20 @@ function ExpenseEditController(ExpenseDocument, Account, $stateParams, $state) {
         vm.errors = [{message: "Could not retrieve expense with ID " + $stateParams.id}];
     });
 
+    vm.addRow = function () {
+        $uibModal
+            .open({
+                component: 'ExpenseDocumentRowCreateModalComponent',
+                resolve: {}
+            }).result
+            .then(function (newRow) {
+                if (vm.expense.rows === undefined) vm.expense.rows = [];
+                vm.expense.rows.push(newRow);
+                if (vm.expense.amount === undefined) vm.expense.amount = 0;
+                vm.expense.amount += newRow.amount;
+            });
+    };
+
     vm.updateExpense = function () {
         vm.errors = undefined;
         vm.expense.$update(function () {

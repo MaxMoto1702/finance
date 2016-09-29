@@ -12,7 +12,6 @@ import spock.lang.Specification
 class BalanceDocumentServiceSpec extends Specification {
 
     def setup() {
-        def account = new Account(name: 'test', balance: new Balance(date: new Date(), amount: 0.00)).save(flush: true)
 //        def incomeDocument = new BalanceDocument(
 //                account: account,
 //                company: 'test company',
@@ -40,19 +39,17 @@ class BalanceDocumentServiceSpec extends Specification {
     void "test save document"() {
         given:
         def document = new BalanceDocument(
-                account: Account.first(),
-                company: 'test company',
                 date: new Date(),
                 description: 'test'
         )
-        document.addToRows(new BalanceDocumentRow(account: Account.first(), amount: 500.00))
-        document.addToRows(new BalanceDocumentRow(account: Account.first(), amount: 250.00))
+        document.addToRows(new BalanceDocumentRow(accountName: 'Account #1', amount: 500.00))
+        document.addToRows(new BalanceDocumentRow(accountName: 'Account #2', amount: 250.00))
 
         when:
         service.save(document)
 
         then:
-        BalanceDocument.findByDescription('test').amount == 750.00
+        BalanceDocument.findByDescription('test')?.amount == 750.00
     }
 
 //    void "test processing income document"() {

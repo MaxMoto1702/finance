@@ -15,6 +15,20 @@ function IncomeEditController(IncomeDocument, Account, $stateParams, $state) {
         vm.errors = [{message: "Could not retrieve income with ID " + $stateParams.id}];
     });
 
+    vm.addRow = function () {
+        $uibModal
+            .open({
+                component: 'IncomeDocumentRowCreateModalComponent',
+                resolve: {}
+            }).result
+            .then(function (newRow) {
+                if (vm.income.rows === undefined) vm.income.rows = [];
+                vm.income.rows.push(newRow);
+                if (vm.income.amount === undefined) vm.income.amount = 0;
+                vm.income.amount += newRow.amount;
+            });
+    };
+
     vm.updateIncome = function () {
         vm.errors = undefined;
         vm.income.$update(function () {

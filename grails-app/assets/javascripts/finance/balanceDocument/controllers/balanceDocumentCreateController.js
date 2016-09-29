@@ -19,6 +19,8 @@ function BalanceDocumentCreateController(BalanceDocument, $uibModal, $state) {
             .then(function (newRow) {
                 if (vm.balanceDocument.rows === undefined) vm.balanceDocument.rows = [];
                 vm.balanceDocument.rows.push(newRow);
+                if (vm.balanceDocument.amount === undefined) vm.balanceDocument.amount = 0;
+                vm.balanceDocument.amount += newRow.amount;
             });
     };
 

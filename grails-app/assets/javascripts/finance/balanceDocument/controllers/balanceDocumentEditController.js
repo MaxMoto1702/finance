@@ -14,6 +14,20 @@ function BalanceDocumentEditController(BalanceDocument, $stateParams, $state) {
         vm.errors = [{message: "Could not retrieve balanceDocument with ID " + $stateParams.id}];
     });
 
+    vm.addRow = function () {
+        $uibModal
+            .open({
+                component: 'BalanceDocumentRowCreateModalComponent',
+                resolve: {}
+            }).result
+            .then(function (newRow) {
+                if (vm.balanceDocument.rows === undefined) vm.balanceDocument.rows = [];
+                vm.balanceDocument.rows.push(newRow);
+                if (vm.balanceDocument.amount === undefined) vm.balanceDocument.amount = 0;
+                vm.balanceDocument.amount += newRow.amount;
+            });
+    };
+
     vm.updateBalanceDocument = function () {
         vm.errors = undefined;
         vm.balanceDocument.$update(function () {

@@ -21,6 +21,8 @@ function ExpenseCreateController(ExpenseDocument, Account, $uibModal, $state) {
             .then(function (newRow) {
                 if (vm.expense.rows === undefined) vm.expense.rows = [];
                 vm.expense.rows.push(newRow);
+                if (vm.expense.amount === undefined) vm.expense.amount = 0;
+                vm.expense.amount += newRow.amount;
             });
     };
 
