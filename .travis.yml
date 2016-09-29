@@ -1,27 +1,43 @@
 language: groovy
 jdk:
     - oraclejdk8
+
+#Install apt addons
 addons:
     ssh_known_hosts:
         - serebryanskiy.site
         - 77.37.164.49
+
+#before_install
 before_install:
     - openssl aes-256-cbc -K $encrypted_0e03e4d6fca5_key -iv $encrypted_0e03e4d6fca5_iv -in deploy_rsa.enc -out deploy_rsa -d
     - ls $TRAVIS_BUILD_DIR
     - eval "$(ssh-agent -s)"
     - chmod 600 $TRAVIS_BUILD_DIR/deploy_rsa
     - ssh-add $TRAVIS_BUILD_DIR/deploy_rsa
-after_failure:
-    - ./gradlew -b reports.gradle build
-    - scp build/reports/reports.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
+
+#install
+
+#before_script
+
+#script
+
+#after_success or after_failure
 after_success:
     - ./gradlew -b doc.gradle build
     - ./gradlew -b reports.gradle build
+after_failure:
+    - ./gradlew -b reports.gradle build
+    - scp build/reports/reports.war deployer@serebryanskiy.site:~/tomcat8/finance-reports.war
+
+#OPTIONAL before_deploy
 before_deploy:
     - mkdir -p build/deploy
     - cp build/libs/finance-0.1.war build/deploy/finance.war
     - cp build/asciidoc/asciidoc.war build/deploy/finance-documentation.war
     - cp build/reports/reports.war build/deploy/finance-reports.war
+
+#OPTIONAL deploy
 deploy:
     provider: script
     skip_cleanup: true
@@ -29,3 +45,7 @@ deploy:
     on:
         branch: dev
 #        branch: master
+
+#OPTIONAL after_deploy
+
+#after_script
