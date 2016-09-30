@@ -21,7 +21,7 @@ before_install:
 #before_script
 
 #script
-
+cd deploye
 #after_success or after_failure
 after_success:
     - ./gradlew -b doc.gradle build
@@ -36,12 +36,13 @@ before_deploy:
     - cp build/libs/finance-0.1.war build/deploy/finance.war
     - cp build/asciidoc/asciidoc.war build/deploy/finance-documentation.war
     - cp build/reports/reports.war build/deploy/finance-reports.war
+    - ls -l build/deploy
 
 #OPTIONAL deploy
 deploy:
     provider: script
     skip_cleanup: true
-    script: scp build/libs/*.war deployer@serebryanskiy.site:~/tomcat8/
+    script: scp build/deploy/*.war deployer@serebryanskiy.site:~/tomcat8/
     on:
         branch: dev
 #        branch: master
