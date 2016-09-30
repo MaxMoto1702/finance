@@ -21,7 +21,7 @@ before_install:
 #before_script
 
 #script
-cd deploye
+
 #after_success or after_failure
 after_success:
     - ./gradlew -b doc.gradle build
