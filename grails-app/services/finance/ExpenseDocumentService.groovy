@@ -60,7 +60,10 @@ class ExpenseDocumentService {
         document.status = DocumentStatus.CREATED
         def amount = document.rows.sum { ExpenseDocumentRow row -> row.amount }
         document.amount = amount as BigDecimal
-        if (document.validate()) document.save flush: true else log.error(document.errors)
+        if (document.validate())
+            document.save flush: true
+        else
+            log.error(document.errors)
     }
 
     def delete(ExpenseDocument document) {

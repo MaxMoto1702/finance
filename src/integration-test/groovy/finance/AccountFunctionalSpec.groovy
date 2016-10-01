@@ -32,16 +32,16 @@ class AccountFunctionalSpec extends GebSpec {
 //        }
 //    }
 //
-//    void "Test the index action"() {
+    void "Test the index action"() {
 //        when: "The index action is requested"
 //        def response = restBuilder.get(resourcePath)
 //
 //        then: "The response is correct"
 //        response.status == OK.value()
 //        response.json == []
-//    }
-//
-//    void "Test the save action correctly persists an instance"() {
+    }
+
+    void "Test the save action correctly persists an instance"() {
 //        when: "The save action is executed with no content"
 //        def response = restBuilder.post(resourcePath)
 //
@@ -65,9 +65,9 @@ class AccountFunctionalSpec extends GebSpec {
 //        response.status == CREATED.value()
 //        response.json.id
 //        Account.count() == 1
-//    }
-//
-//    void "Test the update action correctly updates an instance"() {
+    }
+
+    void "Test the update action correctly updates an instance"() {
 //        when: "The save action is executed with valid data"
 //        def response = restBuilder.post(resourcePath) {
 //            json validJson
@@ -95,9 +95,9 @@ class AccountFunctionalSpec extends GebSpec {
 //        response.status == OK.value()
 //        response.json
 //
-//    }
-//
-//    void "Test the show action correctly renders an instance"() {
+    }
+
+    void "Test the show action correctly renders an instance"() {
 //        when: "The save action is executed with valid data"
 //        def response = restBuilder.post(resourcePath) {
 //            json validJson
@@ -114,9 +114,9 @@ class AccountFunctionalSpec extends GebSpec {
 //        then: "The response is correct"
 //        response.status == OK.value()
 //        response.json.id == id
-//    }
-//
-//    void "Test the delete action correctly deletes an instance"() {
+    }
+
+    void "Test the delete action correctly deletes an instance"() {
 //        when: "The save action is executed with valid data"
 //        def response = restBuilder.post(resourcePath) {
 //            json validJson
@@ -139,5 +139,5 @@ class AccountFunctionalSpec extends GebSpec {
 //        then: "The response is correct"
 //        response.status == NO_CONTENT.value()
 //        !Account.get(id)
-//    }
+    }
 }

@@ -1,0 +1,138 @@
+<div id="list-company" class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Companys
+                <small>list</small>
+            </h1>
+
+            <button type="button" class="btn btn-default" style="float: right" data-toggle="popover"
+                    data-placement="left" title="Filters" data-html="true"
+                    data-content="<form action='company.html' class='filter'><div class='form-group'><label>Name</label><input='text' class='form-control'></div><button type='submit' class='btn btn-default'>Search</button></form>">
+                <i class="fa fa-filter" aria-hidden="true"></i></button>
+
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-file"></i> Companys
+                </li>
+            </ol>
+            <!--/.breadcrumb-->
+
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Closed</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="company in vm.companyList"
+                        ng-click="vm.go('company.show', {id: company.id})">
+                        <td>{{company.name}}</td>
+                        <td><i class="fa"
+                               ng-class="{'fa-lock': company.closeDate != null, 'fa-unlock':  company.closeDate == null}"
+                               aria-hidden="true"></i></td>
+                    </tr>
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #1</td>-->
+                    <!--<td><i class="fa fa-lock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #2</td>-->
+                    <!--<td><i class="fa fa-lock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #3</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #4</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #5</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #6</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #7</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #8</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #9</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #10</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #11</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #12</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #13</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #14</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #15</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #16</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #17</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #18</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #19</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    <!--<tr ng-click="vm.go('company.show', {id: ''})">-->
+                    <!--<td>Company #20</td>-->
+                    <!--<td><i class="fa fa-unlock" aria-hidden="true"></i></td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <!--/.table-responsive-->
+
+        </div>
+        <!-- /.col-lg-12 -->
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#list-company -->

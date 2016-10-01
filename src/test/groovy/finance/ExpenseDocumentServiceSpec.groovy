@@ -15,7 +15,7 @@ class ExpenseDocumentServiceSpec extends Specification {
         def account = new Account(name: 'test', balance: new Balance(date: new Date(), amount: 0.00)).save(flush: true)
         def expenseDocument = new ExpenseDocument(
                 account: account,
-                company: 'test company',
+                company: new Company(name: 'test company'),
                 date: new Date(),
                 amount: 1000.00,
                 description: 'test income',
@@ -32,7 +32,7 @@ class ExpenseDocumentServiceSpec extends Specification {
         given:
         def document = new ExpenseDocument(
                 account: Account.first(),
-                company: 'test company',
+                company: new Company(name: 'test company'),
                 date: new Date(),
                 description: 'test'
         )

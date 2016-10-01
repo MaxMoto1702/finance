@@ -10,7 +10,7 @@ import grails.plugins.rest.client.RestBuilder
 
 @Integration
 @Rollback
-class DocumentFunctionalSpec extends GebSpec {
+class CompanyFunctionalSpec extends GebSpec {
 
 //    RestBuilder getRestBuilder() {
 //        new RestBuilder()
@@ -60,7 +60,7 @@ class DocumentFunctionalSpec extends GebSpec {
 //        then:"The response is correct"
 //        response.status == CREATED.value()
 //        response.json.id
-//        Document.count() == 1
+//        Company.count() == 1
     }
 
     void "Test the update action correctly updates an instance"() {
@@ -91,7 +91,7 @@ class DocumentFunctionalSpec extends GebSpec {
 //        response.status == OK.value()
 //        response.json
 //
-    }
+    }    
 
     void "Test the show action correctly renders an instance"() {
 //        when:"The save action is executed with valid data"
@@ -134,6 +134,6 @@ class DocumentFunctionalSpec extends GebSpec {
 //
 //        then:"The response is correct"
 //        response.status == NO_CONTENT.value()
-//        !Document.get(id)
-    }
+//        !Company.get(id)
+    }    
 }

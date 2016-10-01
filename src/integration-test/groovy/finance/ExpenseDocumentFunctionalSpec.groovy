@@ -27,17 +27,17 @@ class ExpenseDocumentFunctionalSpec extends GebSpec {
 //    Closure getInvalidJson() {{->
 //        assert false, "TODO: provide invalid JSON"
 //    }}
-//
-//    void "Test the index action"() {
+
+    void "Test the index action"() {
 //        when:"The index action is requested"
 //        def response = restBuilder.get(resourcePath)
 //
 //        then:"The response is correct"
 //        response.status == OK.value()
 //        response.json == []
-//    }
-//
-//    void "Test the save action correctly persists an instance"() {
+    }
+
+    void "Test the save action correctly persists an instance"() {
 //        when:"The save action is executed with no content"
 //        def response = restBuilder.post(resourcePath)
 //
@@ -61,9 +61,9 @@ class ExpenseDocumentFunctionalSpec extends GebSpec {
 //        response.status == CREATED.value()
 //        response.json.id
 //        ExpenseDocument.count() == 1
-//    }
-//
-//    void "Test the update action correctly updates an instance"() {
+    }
+
+    void "Test the update action correctly updates an instance"() {
 //        when:"The save action is executed with valid data"
 //        def response = restBuilder.post(resourcePath) {
 //            json validJson
@@ -91,9 +91,9 @@ class ExpenseDocumentFunctionalSpec extends GebSpec {
 //        response.status == OK.value()
 //        response.json
 //
-//    }
-//
-//    void "Test the show action correctly renders an instance"() {
+    }
+
+    void "Test the show action correctly renders an instance"() {
 //        when:"The save action is executed with valid data"
 //        def response = restBuilder.post(resourcePath) {
 //            json validJson
@@ -110,9 +110,9 @@ class ExpenseDocumentFunctionalSpec extends GebSpec {
 //        then:"The response is correct"
 //        response.status == OK.value()
 //        response.json.id == id
-//    }
-//
-//    void "Test the delete action correctly deletes an instance"() {
+    }
+
+    void "Test the delete action correctly deletes an instance"() {
 //        when:"The save action is executed with valid data"
 //        def response = restBuilder.post(resourcePath) {
 //            json validJson
@@ -135,5 +135,5 @@ class ExpenseDocumentFunctionalSpec extends GebSpec {
 //        then:"The response is correct"
 //        response.status == NO_CONTENT.value()
 //        !ExpenseDocument.get(id)
-//    }
+    }
 }

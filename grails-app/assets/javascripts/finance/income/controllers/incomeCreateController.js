@@ -4,11 +4,9 @@ angular
     .module("finance.income")
     .controller("IncomeCreateController", IncomeCreateController);
 
-function IncomeCreateController(IncomeDocument, Account, $uibModal, $state) {
+function IncomeCreateController(IncomeDocument, $uibModal, $state) {
 
     var vm = this;
-
-    vm.accounts = Account.list();
 
     vm.income = new IncomeDocument();
 

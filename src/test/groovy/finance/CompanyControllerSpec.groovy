@@ -4,9 +4,9 @@ import grails.test.mixin.*
 import spock.lang.*
 import static org.springframework.http.HttpStatus.*
 
-@TestFor(OperationController)
-@Mock(Operation)
-class OperationControllerSpec extends Specification {
+@TestFor(CompanyController)
+@Mock(Company)
+class CompanyControllerSpec extends Specification {
 
 //    def populateValidParams(params) {
 //        assert params != null
@@ -23,6 +23,8 @@ class OperationControllerSpec extends Specification {
 //
 //        then:"The response is correct"
 //            response.text == '[]'
+        expect:
+        true
     }
 
 
@@ -31,9 +33,9 @@ class OperationControllerSpec extends Specification {
 //        when:"The save action is executed with an invalid instance"
 //            request.contentType = JSON_CONTENT_TYPE
 //            request.method = 'POST'
-//            def operation = new Operation()
-//            operation.validate()
-//            controller.save(operation)
+//            def company = new Company()
+//            company.validate()
+//            controller.save(company)
 //
 //        then:"The create view is rendered again with the correct model"
 //            response.status == UNPROCESSABLE_ENTITY.value()
@@ -42,14 +44,16 @@ class OperationControllerSpec extends Specification {
 //        when:"The save action is executed with a valid instance"
 //            response.reset()
 //            populateValidParams(params)
-//            operation = new Operation(params)
+//            company = new Company(params)
 //
-//            controller.save(operation)
+//            controller.save(company)
 //
 //        then:"A redirect is issued to the show action"
-//            Operation.count() == 1
+//            Company.count() == 1
 //            response.status == CREATED.value()
 //            response.json
+        expect:
+        true
     }
 
     void "Test that the show action returns the correct model"() {
@@ -62,13 +66,15 @@ class OperationControllerSpec extends Specification {
 //        when:"A domain instance is passed to the show action"
 //            populateValidParams(params)
 //            response.reset()
-//            def operation= new Operation(params).save()
-//            controller.show(operation)
+//            def company= new Company(params).save()
+//            controller.show(company)
 //
 //        then:"A model is populated containing the domain instance"
-//            operation!= null
+//            company!= null
 //            response.status == OK.value()
 //            response.json
+        expect:
+        true
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -82,9 +88,9 @@ class OperationControllerSpec extends Specification {
 //
 //        when:"An invalid domain instance is passed to the update action"
 //            response.reset()
-//            def operation= new Operation()
-//            operation.validate()
-//            controller.update(operation)
+//            def company= new Company()
+//            company.validate()
+//            controller.update(company)
 //
 //        then:"The edit view is rendered again with the invalid instance"
 //            response.status == UNPROCESSABLE_ENTITY.value()
@@ -93,13 +99,15 @@ class OperationControllerSpec extends Specification {
 //        when:"A valid domain instance is passed to the update action"
 //            response.reset()
 //            populateValidParams(params)
-//            operation= new Operation(params).save(flush: true)
-//            controller.update(operation)
+//            company= new Company(params).save(flush: true)
+//            controller.update(company)
 //
 //        then:"A redirect is issued to the show action"
-//            operation!= null
+//            company!= null
 //            response.status == OK.value()
-//            response.json.id == operation.id
+//            response.json.id == company.id
+        expect:
+        true
     }
 
     void "Test that the delete action deletes an instance if it exists"() {
@@ -115,17 +123,19 @@ class OperationControllerSpec extends Specification {
 //        when:"A domain instance is created"
 //            response.reset()
 //            populateValidParams(params)
-//            def operation= new Operation(params).save(flush: true)
+//            def company= new Company(params).save(flush: true)
 //
 //        then:"It exists"
-//            Operation.count() == 1
+//            Company.count() == 1
 //
 //        when:"The domain instance is passed to the delete action"
-//            controller.delete(operation)
+//            controller.delete(company)
 //
 //        then:"The instance is deleted"
-//            Operation.count() == 0
+//            Company.count() == 0
 //            response.status == NO_CONTENT.value()
 //
+        expect:
+        true
     }
 }

@@ -15,7 +15,7 @@ class IncomeDocumentServiceSpec extends Specification {
         def account = new Account(name: 'test', balance: new Balance(date: new Date(), amount: 0.00)).save(flush: true)
         def incomeDocument = new IncomeDocument(
                 account: account,
-                company: 'test company',
+                company: new Company(name: 'test company'),
                 date: new Date(),
                 amount: 1000.00,
                 description: 'test income',
@@ -32,7 +32,7 @@ class IncomeDocumentServiceSpec extends Specification {
         given:
         def document = new IncomeDocument(
                 account: Account.first(),
-                company: 'test company',
+                company: new Company(name: 'test company'),
                 date: new Date(),
                 description: 'test'
         )
@@ -56,6 +56,6 @@ class IncomeDocumentServiceSpec extends Specification {
 
         then:
         Operation.countByProduct('test income product') == 1
-        Operation.findByProduct('test income product').amount == 1000.00
+        Operation.findByProduct('test income product')?.amount == 1000.00
     }
 }

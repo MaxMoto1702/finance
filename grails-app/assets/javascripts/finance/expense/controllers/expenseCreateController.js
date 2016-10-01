@@ -4,11 +4,9 @@ angular
     .module("finance.expense")
     .controller("ExpenseCreateController", ExpenseCreateController);
 
-function ExpenseCreateController(ExpenseDocument, Account, $uibModal, $state) {
+function ExpenseCreateController(ExpenseDocument, $uibModal, $state) {
 
     var vm = this;
-
-    vm.accounts = Account.list();
 
     vm.expense = new ExpenseDocument();
 

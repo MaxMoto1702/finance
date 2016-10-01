@@ -14,15 +14,11 @@
     </div>
     <div class="form-group col-md-6">
         <label for="sourceAccount">From account</label>
-        <select id="sourceAccount" name="sourceAccount" class="form-control" ng-model="vm.exchange.sourceAccount"
-                ng-options="account as account.name for account in vm.accounts track by account.id">
-        </select>
+        <account-select id="sourceAccount" name="sourceAccount" ng-model="vm.exchange.sourceAccount"></account-select>
     </div>
     <div class="form-group col-md-6">
         <label for="targetAccount">To account</label>
-        <select id="targetAccount" name="targetAccount" class="form-control" ng-model="vm.exchange.targetAccount"
-                ng-options="account as account.name for account in vm.accounts track by account.id">
-        </select>
+        <account-select id="targetAccount" name="targetAccount" ng-model="vm.exchange.targetAccount"></account-select>
     </div>
     <div class="form-group col-md-12">
         <label for="description">Description</label>

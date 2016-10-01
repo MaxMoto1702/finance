@@ -4,10 +4,8 @@ angular
     .module("finance.expense")
     .controller("ExpenseEditController", ExpenseEditController);
 
-function ExpenseEditController(ExpenseDocument, Account, $stateParams, $state) {
+function ExpenseEditController(ExpenseDocument, $stateParams, $state) {
     var vm = this;
-
-    vm.accounts = Account.list();
 
     ExpenseDocument.get({id: $stateParams.id}, function (data) {
         vm.expense = new ExpenseDocument(data);

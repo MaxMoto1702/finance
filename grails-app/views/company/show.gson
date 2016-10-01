@@ -1,0 +1,7 @@
+import finance.Company
+
+model {
+	Company company
+}
+
+json tmpl.company(company)

@@ -18,15 +18,13 @@
 
     <div class="form-group col-md-6">
         <label for="company">From company</label>
-        <input id="company" name="company" type="text" class="form-control" ng-model="vm.income.company"/>
+        <company-select id="company" name="company" ng-model="vm.income.company"></company-select>
     </div>
     <!-- /.form-group.col-md-6 -->
 
     <div class="form-group col-md-6">
         <label for="account">Account</label>
-        <select id="account" name="account" class="form-control" ng-model="vm.income.account"
-                ng-options="account as account.name for account in vm.accounts track by account.id">
-        </select>
+        <account-select id="account" name="account" ng-model="vm.income.account"></account-select>
     </div>
     <!-- /.form-group.col-md-6 -->
 

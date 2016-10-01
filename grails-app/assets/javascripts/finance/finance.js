@@ -5,6 +5,7 @@
 //= require /finance/index/finance.index
 //= require /finance/dashboard/finance.dashboard
 //= require /finance/account/finance.account
+//= require /finance/company/finance.company
 //= require /finance/balanceDocument/finance.balanceDocument
 //= require /finance/income/finance.income
 //= require /finance/expense/finance.expense
@@ -16,6 +17,7 @@ angular.module("finance", [
     "finance.index",
     "finance.dashboard",
     "finance.account",
+    "finance.company",
     "finance.balanceDocument",
     "finance.income",
     "finance.expense",

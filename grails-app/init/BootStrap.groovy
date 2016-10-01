@@ -1,4 +1,5 @@
 import finance.Account
+import finance.Company
 import grails.util.Environment
 
 class BootStrap {
@@ -10,6 +11,11 @@ class BootStrap {
                 account.save(flush: true)
             else
                 log.error("Can not save account for development")
+            def company = new Company(name: 'For development')
+            if (company.validate())
+                company.save(flush: true)
+            else
+                log.error("Can not save company for development")
         }
     }
     def destroy = {

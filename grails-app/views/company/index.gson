@@ -1,0 +1,8 @@
+import finance.Company
+
+model {
+	Iterable<Company> companyList
+}
+
+json tmpl.company(companyList ?: [])
+

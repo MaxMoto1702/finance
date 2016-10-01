@@ -1,0 +1,6 @@
+<select id="{{vm.id}}"
+        name="{{vm.name}}"
+        class="form-control"
+        ng-model="vm.ngModel"
+        ng-options="account as account.name for account in vm.accounts track by account.id">
+</select>

@@ -4,10 +4,8 @@ angular
     .module("finance.income")
     .controller("IncomeEditController", IncomeEditController);
 
-function IncomeEditController(IncomeDocument, Account, $stateParams, $state) {
+function IncomeEditController(IncomeDocument, $stateParams, $state) {
     var vm = this;
-
-    vm.accounts = Account.list();
 
     Document.get({id: $stateParams.id}, function (data) {
         vm.income = new IncomeDocument(data);

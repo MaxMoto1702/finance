@@ -1,0 +1,6 @@
+<select id="{{vm.id}}"
+        name="{{vm.name}}"
+        class="form-control"
+        ng-model="vm.ngModel"
+        ng-options="company as company.name for company in vm.companies track by company.id">
+</select>
