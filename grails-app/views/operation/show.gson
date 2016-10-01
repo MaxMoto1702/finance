@@ -1,0 +1,7 @@
+import finance.Operation
+
+model {
+	Operation operation
+}
+
+json tmpl.operation(operation)

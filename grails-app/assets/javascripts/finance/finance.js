@@ -9,6 +9,7 @@
 //= require /finance/income/finance.income
 //= require /finance/expense/finance.expense
 //= require /finance/exchange/finance.exchange
+//= require /finance/operation/finance.operation
 
 angular.module("finance", [
     "finance.core",
@@ -19,5 +20,6 @@ angular.module("finance", [
     "finance.income",
     "finance.expense",
     "finance.exchange",
+    "finance.operation",
     "ui.bootstrap"
 ]);

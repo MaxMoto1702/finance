@@ -1,0 +1,21 @@
+import finance.Account
+import finance.Operation
+
+model {
+	Operation operation
+}
+
+//json g.render(operation)
+json {
+	id operation.id
+    product operation.product
+    account operation.account, { Account account ->
+        id account.id
+        name account.name
+    }
+    amount operation.amount
+    period operation.period.toString()
+    date operation.date
+    closeDate operation.closeDate
+    type operation.type
+}

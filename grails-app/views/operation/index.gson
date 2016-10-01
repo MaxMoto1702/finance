@@ -1,0 +1,8 @@
+import finance.Operation
+
+model {
+	Iterable<Operation> operationList
+}
+
+json tmpl.operation(operationList ?: [])
+
