@@ -45,3 +45,7 @@
 .popover form.filter {
     width: 300px;
 }
+
+.uib-datepicker-popup .btn-default {
+    border: none;
+}

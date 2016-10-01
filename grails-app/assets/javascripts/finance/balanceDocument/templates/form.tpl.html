@@ -1,15 +1,22 @@
 <fieldset class="row">
     <div class="form-group col-md-6">
         <label for="date">Date</label>
-        <input id="date" name="date" type="date" class="form-control" ng-model="vm.balanceDocument.date"/>
+        <div class="input-group">
+            <input id="date" name="date" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy"
+                   ng-model="vm.balanceDocument.date" is-open="popup1.opened" ng-click="popup1.opened = true"/>
+            <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="popup1.opened = true"><i
+                    class="fa fa-calendar"></i></button></span>
+        </div>
     </div>
     <div class="form-group col-md-6">
         <label for="amount">Amount</label>
-        <input id="amount" name="amount" type="number" class="form-control" ng-model="vm.balanceDocument.amount" readonly/>
+        <input id="amount" name="amount" type="number" class="form-control" ng-model="vm.balanceDocument.amount"
+               readonly/>
     </div>
     <div class="form-group col-md-12">
         <label for="description">Description</label>
-        <input id="description" name="description" type="text" class="form-control" ng-model="vm.balanceDocument.description"/>
+        <input id="description" name="description" type="text" class="form-control"
+               ng-model="vm.balanceDocument.description"/>
     </div>
     <!-- /.form-group.col-md-12 -->
 

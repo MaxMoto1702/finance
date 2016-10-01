@@ -1,7 +1,12 @@
 <fieldset class="row">
     <div class="form-group col-md-6">
         <label for="date">Date</label>
-        <input id="date" name="date" type="date" class="form-control" ng-model="vm.income.date"/>
+        <div class="input-group">
+            <input id="date" name="date" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy"
+                   ng-model="vm.income.date" is-open="popup1.opened" ng-click="popup1.opened = true"/>
+            <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="popup1.opened = true"><i
+                    class="fa fa-calendar"></i></button></span>
+        </div>
     </div>
     <!-- /.form-group.col-md-6 -->
 
