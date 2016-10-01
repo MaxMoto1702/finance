@@ -1922,7 +1922,6 @@ function assertNotHasOwnProperty(name, context) {
  * @param {boolean} [bindFnToScope=true]
  * @returns {Object} value as accessible by path
  */
-//TODO(misko): this function needs to be removed
 function getter(obj, path, bindFnToScope) {
   if (!path) return obj;
   var keys = path.split('.');
@@ -1948,7 +1947,6 @@ function getter(obj, path, bindFnToScope) {
  * @returns {Array} the inputted object or a jqLite collection containing the nodes
  */
 function getBlockNodes(nodes) {
-  // TODO(perf): update `nodes` instead of creating a new object?
   var node = nodes[0];
   var endNode = nodes[nodes.length - 1];
   var blockNodes;
@@ -3420,7 +3418,6 @@ forEach({
         return this;
       } else {
         // we are a read, so read the first child.
-        // TODO: do we still need this?
         var value = fn.$dv;
         // Only if we have $dv do we iterate over all, otherwise it is just the first element.
         var jj = (isUndefined(value)) ? Math.min(nodeCount, 1) : nodeCount;
@@ -3487,7 +3484,6 @@ function createEventHandler(element, events) {
     }
   };
 
-  // TODO: this is a hack for angularMocks/clearDataCache that makes it possible to deregister all
   //       events on `element`
   eventHandler.elem = element;
   return eventHandler;
@@ -3916,7 +3912,6 @@ function stringifyFn(fn) {
   // Support: Chrome 50-51 only
   // Creating a new string by adding `' '` at the end, to hack around some bug in Chrome v50/51
   // (See https://github.com/angular/angular.js/issues/14487.)
-  // TODO (gkalpak): Remove workaround when Chrome v52 is released
   return Function.prototype.toString.call(fn) + ' ';
 }
 
@@ -5951,7 +5946,6 @@ function Browser(window, document, $log, $sniffer) {
   var outstandingRequestCount = 0;
   var outstandingRequestCallbacks = [];
 
-  // TODO(vojta): remove this temporary api
   self.$$completeOutstandingRequest = completeOutstandingRequest;
   self.$$incOutstandingRequestCount = function() { outstandingRequestCount++; };
 
@@ -5984,7 +5978,6 @@ function Browser(window, document, $log, $sniffer) {
   /**
    * @private
    * Note: this method is used only by scenario runner
-   * TODO(vojta): prefix this method with $$ ?
    * @param {function()} callback Function that will be called when no outstanding request
    */
   self.notifyWhenNoOutstandingRequests = function(callback) {
@@ -6168,7 +6161,6 @@ function Browser(window, document, $log, $sniffer) {
    * @return {function(string)} Returns the registered listener fn - handy if the fn is anonymous.
    */
   self.onUrlChange = function(callback) {
-    // TODO(vojta): refactor to use node's syntax for events
     if (!urlChangeInit) {
       // We listen on both (hashchange/popstate) when available, as some browsers (e.g. Opera)
       // don't fire popstate when user change the address bar and don't fire hashchange when url
@@ -7923,7 +7915,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       return ddo;
     }
 
-    // TODO(pete) remove the following `forEach` before we release 1.6.0
     // The component-router@0.2.0 looks for the annotations on the controller constructor
     // Nothing in Angular looks for annotations on the factory function but we can't remove
     // it from 1.5.x yet.
@@ -8213,7 +8204,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
        * @param {string=} attrName Optional none normalized name. Defaults to key.
        */
       $set: function(key, value, writeAttr, attrName) {
-        // TODO: decide whether or not to throw an error if "class"
         //is set through this function since it may cause $updateClass to
         //become unstable.
 
@@ -8503,7 +8493,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     function detectNamespaceForChildElements(parentElement) {
-      // TODO: Make this detect MathML as well...
       var node = parentElement && parentElement[0];
       if (!node) {
         return 'html';
@@ -8990,7 +8979,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             // being referenced by the `parentNode` property of all of the child nodes.  By adding
             // a reference to the fragment via a different property, we can avoid that incorrect
             // behavior.
-            // TODO: remove this line after Chrome 50 has been released
             $template[0].$$parentNode = $template[0].parentNode;
 
             childTranscludeFn = compilationGenerator(mightHaveMultipleTransclusionError, $template, transcludeFn, terminalPriority,
@@ -11922,7 +11910,6 @@ function $HttpBackendProvider() {
 }
 
 function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDocument) {
-  // TODO(vojta): fix the signature
   return function(method, url, post, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploadEventHandlers) {
     $browser.$$incOutstandingRequestCount();
     url = url || $browser.url();
@@ -12201,7 +12188,6 @@ function $InterpolateProvider() {
       return value;
     }
 
-    //TODO: this is the same as the constantWatchDelegate in parse.js
     function constantWatchDelegate(scope, listener, objectEquality, constantInterp) {
       var unwatch;
       return unwatch = scope.$watch(function constantInterpolateWatch(scope) {
@@ -13631,7 +13617,6 @@ function $LocationProvider() {
     }
 
     $rootElement.on('click', function(event) {
-      // TODO(vojta): rewrite link when opening in new tab/window (in legacy browser)
       // currently we open nice url link and redirect then
 
       if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.shiftKey || event.which == 2 || event.button == 2) return;
@@ -14490,7 +14475,6 @@ AST.prototype = {
   },
 
   constant: function() {
-    // TODO check that it is a constant
     return { type: AST.Literal, value: this.consume().value };
   },
 
@@ -15919,7 +15903,6 @@ function $ParseProvider() {
       if (typeof newValue === 'object') {
 
         // attempt to convert the value to a primitive type
-        // TODO(docs): add a note to docs that by implementing valueOf even objects and arrays can
         //             be cheaply dirty-checked
         newValue = getValueOf(newValue);
 
@@ -24251,7 +24234,6 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
         val = parseFloat(val);
       }
       minVal = isNumber(val) && !isNaN(val) ? val : undefined;
-      // TODO(matsko): implement validateLater to reduce number of validations
       ctrl.$validate();
     });
   }
@@ -24267,7 +24249,6 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
         val = parseFloat(val);
       }
       maxVal = isNumber(val) && !isNaN(val) ? val : undefined;
-      // TODO(matsko): implement validateLater to reduce number of validations
       ctrl.$validate();
     });
   }
@@ -27794,7 +27775,6 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
     var modelValue = ngModelGet($scope);
 
     // if scope model value and ngModel value are out of sync
-    // TODO(perf): why not move this to the action fn?
     if (modelValue !== ctrl.$modelValue &&
        // checks for NaN is needed to allow setting the model to NaN when there's an asyncValidator
        (ctrl.$modelValue === ctrl.$modelValue || modelValue === modelValue)
@@ -29668,7 +29648,6 @@ var ngRepeatDirective = ['$parse', '$animate', '$compile', function($parse, $ani
   var ngRepeatMinErr = minErr('ngRepeat');
 
   var updateScope = function(scope, index, valueIdentifier, value, keyIdentifier, key, arrayLength) {
-    // TODO(perf): generate setters to shave off ~40ms or 1-1.5%
     scope[valueIdentifier] = value;
     if (keyIdentifier) scope[keyIdentifier] = key;
     scope.$index = index;

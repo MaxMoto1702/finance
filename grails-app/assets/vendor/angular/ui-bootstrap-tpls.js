@@ -2765,7 +2765,6 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
       $attrs.$observe('uibDatepickerPopup', function(value, oldValue) {
         var newDateFormat = value || datepickerPopupConfig.datepickerPopup;
         // Invalidate the $modelValue to ensure that formatters re-run
-        // FIXME: Refactor when PR is merged: https://github.com/angular/angular.js/pull/10764
         if (newDateFormat !== dateFormat) {
           dateFormat = newDateFormat;
           ngModel.$modelValue = null;
@@ -3843,7 +3842,6 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
       var scrollbarPadding;
       var SNAKE_CASE_REGEXP = /[A-Z]/g;
 
-      // TODO: extract into common dependency with tooltip
       function snake_case(name) {
         var separator = '-';
         return name.replace(SNAKE_CASE_REGEXP, function(letter, pos) {
@@ -4773,7 +4771,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
   /**
    * Returns the actual instance of the $tooltip service.
-   * TODO support multiple triggers
    */
   this.$get = ['$window', '$compile', '$timeout', '$document', '$uibPosition', '$interpolate', '$rootScope', '$parse', '$$stackedMap', function($window, $compile, $timeout, $document, $position, $interpolate, $rootScope, $parse, $$stackedMap) {
     var openedTooltips = $$stackedMap.createNew();
@@ -4910,7 +4907,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
             ttScope.origScope = scope;
 
             // By default, the tooltip is not open.
-            // TODO add ability to start tooltip opened
             ttScope.isOpen = false;
 
             function toggleTooltipBind() {
@@ -4998,7 +4994,6 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
                   assignIsOpen(false);
                   // And now we remove it from the DOM. However, if we have animation, we
                   // need to wait for it to expire beforehand.
-                  // FIXME: this is a placeholder for a port of the transitions library.
                   // The fade transition in TWBS is 150ms.
                   if (ttScope.animation) {
                     if (!transitionTimeout) {

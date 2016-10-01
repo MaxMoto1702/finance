@@ -30,5 +30,3 @@ asciidoctor {
 }
 
 war.dependsOn asciidoctor
-
-// TODO add task deploy to tomcat
