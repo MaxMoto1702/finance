@@ -66,5 +66,6 @@ class BalanceDocumentService {
                 return
             }
         }
+        document.delete(flush: true)
     }
 }

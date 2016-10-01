@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class IncomeDocumentController {
 
+    def incomeDocumentService
+
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -65,19 +67,55 @@ class IncomeDocumentController {
             return
         }
 
-        incomeDocument.delete flush:true
+//        incomeDocument.delete flush:true
+        incomeDocumentService.delete incomeDocument
+
+        if (incomeDocument.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond incomeDocument.errors, view:'edit', status: METHOD_NOT_ALLOWED
+            return
+        }
 
         render status: NO_CONTENT
     }
 
     @Transactional
-    def process(BalanceDocument balanceDocument) {
-        throw new RuntimeException("Process document not implemented")
-//        respond balanceDocument, [status: OK, view:"show"]
+    def process(IncomeDocument document) {
+
+        if (document == null) {
+            transactionStatus.setRollbackOnly()
+            render status: NOT_FOUND
+            return
+        }
+
+        incomeDocumentService.process(document)
+
+        if (document.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond document.errors, view:'edit', status: METHOD_NOT_ALLOWED
+            return
+        }
+
+        render status: NO_CONTENT
     }
 
     @Transactional
-    def rollback(BalanceDocument balanceDocument) {
-        throw new RuntimeException("Rollback document not implemented")
+    def rollback(IncomeDocument  document) {
+
+        if (document == null) {
+            transactionStatus.setRollbackOnly()
+            render status: NOT_FOUND
+            return
+        }
+
+        incomeDocumentService.rollback(document)
+
+        if (document.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond document.errors, view:'edit', status: METHOD_NOT_ALLOWED
+            return
+        }
+
+        render status: NO_CONTENT
     }
 }

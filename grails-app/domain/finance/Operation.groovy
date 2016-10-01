@@ -10,7 +10,9 @@ class Operation {
     OperationType type
     Period period
     Date date
+    Date closeDate
 
     static constraints = {
+        closeDate nullable: true
     }
 }
