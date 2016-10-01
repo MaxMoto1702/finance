@@ -50,7 +50,7 @@ class ExpenseDocumentServiceSpec extends Specification {
         def document = ExpenseDocument.findByDescription('test income')
 
         when:
-        service.processing(document)
+        service.process(document)
 
         then:
         Operation.countByProduct('test income product') == 1
