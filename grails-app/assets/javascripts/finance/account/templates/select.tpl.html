@@ -1,6 +1,7 @@
-<select id="{{vm.id}}"
-        name="{{vm.name}}"
-        class="form-control"
-        ng-model="vm.ngModel"
-        ng-options="account as account.name for account in vm.accounts track by account.id">
-</select>
+<input id="{{vm.id}}"
+       name="{{vm.name}}"
+       class="form-control"
+       ng-model="vm.ngModel"
+       typeahead-min-length="0"
+       typeahead-editable="false"
+       uib-typeahead="account as (account.name != undefined ? account.name : 'ACCOUNT ID: ' + account.id) for account in vm.accounts">

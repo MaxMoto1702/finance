@@ -8,14 +8,14 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(IncomeDocumentService)
-@Mock([Account, IncomeDocument, IncomeDocumentRow, Operation, Product])
+@Mock([Account, IncomeDocument, IncomeDocumentRow, Operation, Product, Company])
 class IncomeDocumentServiceSpec extends Specification {
 
     def setup() {
         def account = new Account(name: 'test', balance: new Balance(date: new Date(), amount: 0.00)).save(flush: true)
         def incomeDocument = new IncomeDocument(
                 account: account,
-                company: new Company(name: 'test company'),
+                companyName: 'test company',
                 date: new Date(),
                 amount: 1000.00,
                 description: 'test income',
@@ -32,7 +32,7 @@ class IncomeDocumentServiceSpec extends Specification {
         given:
         def document = new IncomeDocument(
                 account: Account.first(),
-                company: new Company(name: 'test company'),
+                companyName: 'test company',
                 date: new Date(),
                 description: 'test'
         )

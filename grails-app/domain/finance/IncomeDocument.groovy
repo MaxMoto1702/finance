@@ -3,7 +3,7 @@ package finance
 class IncomeDocument {
 
     Date date
-    Company company
+    String companyName
     Account account
     BigDecimal amount
     String description

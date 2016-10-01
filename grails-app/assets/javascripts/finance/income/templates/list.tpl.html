@@ -43,7 +43,8 @@
                     <thead>
                     <tr>
                         <th>Date</th>
-                        <th>From</th>
+                        <th>From company</th>
+                        <th>To account</th>
                         <th>Amount</th>
                         <th>Status</th>
                         <th>Description</th>
@@ -53,7 +54,8 @@
                     <tbody>
                     <tr ng-repeat="income in vm.incomeList" ng-click="vm.go('income.show', {id: income.id})">
                         <td>{{income.date | date : 'yyyy-MM-dd'}}</td>
-                        <td>{{income.company.name}}</td>
+                        <td>{{income.companyName}}</td>
+                        <td>{{income.account.name}}</td>
                         <td>{{income.amount}}</td>
                         <td>{{income.status}}</td>
                         <td>{{income.description}}</td>

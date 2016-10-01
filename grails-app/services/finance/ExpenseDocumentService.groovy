@@ -8,11 +8,13 @@ import java.time.Period
 class ExpenseDocumentService {
 
     def process(ExpenseDocument document) {
+        def company = Company.findByName(document.companyName) ?: new Company(name: document.companyName).save(flush: true)
         for (ExpenseDocumentRow row in document.rows) {
             def operation = new Operation(
                     product: new Product(name: row.productName),
                     amount: row.amount,
                     account: document.account,
+                    company: company,
                     date: document.date,
                     period: Period.ofYears(document.date.getYear() + 1900),
                     type: OperationType.EXPENSE

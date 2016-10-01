@@ -1,6 +1,6 @@
-<select id="{{vm.id}}"
-        name="{{vm.name}}"
-        class="form-control"
-        ng-model="vm.ngModel"
-        ng-options="company as company.name for company in vm.companies track by company.id">
-</select>
+<input id="{{vm.id}}"
+       name="{{vm.name}}"
+       class="form-control"
+       ng-model="vm.ngModel"
+       typeahead-min-length="0"
+       uib-typeahead="company.name as company.name for company in vm.companies | filter:$viewValue | limitTo: 10"/>

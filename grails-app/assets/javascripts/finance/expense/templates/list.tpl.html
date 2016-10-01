@@ -43,7 +43,8 @@
                     <thead>
                     <tr>
                         <th>Date</th>
-                        <th>To</th>
+                        <th>From account</th>
+                        <th>To company</th>
                         <th>Amount</th>
                         <th>Status</th>
                         <th>Description</th>
@@ -53,7 +54,8 @@
                     <tbody>
                     <tr ng-repeat="expense in vm.expenseList" ng-click="vm.go('expense.show', {id: expense.id})">
                         <td>{{expense.date | date : 'yyyy-MM-dd'}}</td>
-                        <td>{{expense.company}}</td>
+                        <td>{{expense.account.name}}</td>
+                        <td>{{expense.companyName}}</td>
                         <td>{{expense.amount}}</td>
                         <td>{{expense.status}}</td>
                         <td>{{expense.description}}</td>

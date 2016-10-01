@@ -4,10 +4,10 @@ angular
     .module("finance.income")
     .controller("IncomeEditController", IncomeEditController);
 
-function IncomeEditController(IncomeDocument, $stateParams, $state) {
+function IncomeEditController(IncomeDocument, $uibModal, $stateParams, $state) {
     var vm = this;
 
-    Document.get({id: $stateParams.id}, function (data) {
+    IncomeDocument.get({id: $stateParams.id}, function (data) {
         vm.income = new IncomeDocument(data);
     }, function () {
         vm.errors = [{message: "Could not retrieve income with ID " + $stateParams.id}];
