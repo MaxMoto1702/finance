@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ExchangeDocumentController {
 
+    def exchangeDocumentService
+
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -71,13 +73,40 @@ class ExchangeDocumentController {
     }
 
     @Transactional
-    def process(BalanceDocument balanceDocument) {
-        throw new RuntimeException("Process document not implemented")
-//        respond balanceDocument, [status: OK, view:"show"]
+    def process(ExchangeDocument exchangeDocument) {
+        if (exchangeDocument == null) {
+            transactionStatus.setRollbackOnly()
+            render status: NOT_FOUND
+            return
+        }
+
+        exchangeDocumentService.process(exchangeDocument)
+
+        if (exchangeDocument.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond exchangeDocument.errors, view:'edit', status: METHOD_NOT_ALLOWED
+            return
+        }
+
+        render status: NO_CONTENT
     }
 
     @Transactional
-    def rollback(BalanceDocument balanceDocument) {
-        throw new RuntimeException("Rollback document not implemented")
+    def rollback(ExchangeDocument exchangeDocument) {
+        if (exchangeDocument == null) {
+            transactionStatus.setRollbackOnly()
+            render status: NOT_FOUND
+            return
+        }
+
+        exchangeDocumentService.rollback(exchangeDocument)
+
+        if (exchangeDocument.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond exchangeDocument.errors, view:'edit', status: METHOD_NOT_ALLOWED
+            return
+        }
+
+        render status: NO_CONTENT
     }
 }

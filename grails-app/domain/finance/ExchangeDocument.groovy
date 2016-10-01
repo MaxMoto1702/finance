@@ -8,6 +8,11 @@ class ExchangeDocument {
     BigDecimal amount
     String description
 
+    Operation incomeOperation
+    Operation expenseOperation
+
     static constraints = {
+        incomeOperation nullable: true
+        expenseOperation nullable: true
     }
 }
