@@ -10,7 +10,7 @@ class IncomeDocumentService {
     def process(IncomeDocument document) {
         for (IncomeDocumentRow row in document.rows) {
             def operation = new Operation(
-                    product: row.product,
+                    product: new Product(name: row.productName),
                     amount: row.amount,
                     account: document.account,
                     date: document.date,
@@ -60,7 +60,10 @@ class IncomeDocumentService {
         document.status = DocumentStatus.CREATED
         def amount = document.rows.sum { IncomeDocumentRow row -> row.amount }
         document.amount = amount as BigDecimal
-        if (document.validate()) document.save flush: true else log.error(document.errors)
+        if (document.validate())
+            document.save flush: true
+        else
+            println(document.errors)
     }
 
     def delete(IncomeDocument document) {

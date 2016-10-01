@@ -4,7 +4,8 @@
         <fieldset>
             <div class="form-group">
                 <label for="product">Product</label>
-                <input id="product" type="text" class="form-control" ng-model="vm.row.product">
+                <!--<input id="product" type="text" class="form-control" ng-model="vm.row.product">-->
+                <product-select id="product" name="product" ng-model="vm.row.productName"></product-select>
             </div>
             <div class="form-group">
                 <label for="amount">Amount</label>

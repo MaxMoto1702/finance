@@ -8,7 +8,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(ExpenseDocumentService)
-@Mock([Account, ExpenseDocument, ExpenseDocumentRow, Operation])
+@Mock([Account, ExpenseDocument, ExpenseDocumentRow, Operation, Product])
 class ExpenseDocumentServiceSpec extends Specification {
 
     def setup() {
@@ -21,7 +21,7 @@ class ExpenseDocumentServiceSpec extends Specification {
                 description: 'test income',
                 status: DocumentStatus.CREATED
         )
-        expenseDocument.addToRows(new ExpenseDocumentRow(product: 'test income product', amount: 1000.00))
+        expenseDocument.addToRows(new ExpenseDocumentRow(productName: 'test income product', amount: 1000.00))
         if (expenseDocument.validate()) expenseDocument.save(flush: true) else println(expenseDocument.errors)
     }
 
@@ -36,8 +36,8 @@ class ExpenseDocumentServiceSpec extends Specification {
                 date: new Date(),
                 description: 'test'
         )
-        document.addToRows(new ExpenseDocumentRow(product: 'test', amount: 500.00))
-        document.addToRows(new ExpenseDocumentRow(product: 'test', amount: 250.00))
+        document.addToRows(new ExpenseDocumentRow(productName: 'test', amount: 500.00))
+        document.addToRows(new ExpenseDocumentRow(productName: 'test', amount: 250.00))
 
         when:
         service.save(document)
@@ -55,7 +55,7 @@ class ExpenseDocumentServiceSpec extends Specification {
         service.process(document)
 
         then:
-        Operation.countByProduct('test income product') == 1
-        Operation.findByProduct('test income product').amount == 1000.00
+        Operation.countByProduct(Product.findByName('test income product')) == 1
+        Operation.findByProduct(Product.findByName('test income product')).amount == 1000.00
     }
 }

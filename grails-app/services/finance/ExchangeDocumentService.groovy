@@ -9,7 +9,7 @@ class ExchangeDocumentService {
 
     def process(ExchangeDocument document) {
         def incomeOperation = new Operation(
-                product: 'transfer',
+                product: new Product(name: 'transfer'),
                 amount: document.amount,
                 account: document.targetAccount,
                 date: document.date,
@@ -26,7 +26,7 @@ class ExchangeDocumentService {
             return
         }
         def expenseOperation = new Operation(
-                product: 'transfer',
+                product: new Product(name: 'transfer'),
                 amount: document.amount,
                 account: document.sourceAccount,
                 date: document.date,

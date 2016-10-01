@@ -21,8 +21,8 @@ class OperationServiceSpec extends Specification {
                         amount: 100.00
                 )
         ).save flush: true
-        def incomeOperaration = new Operation(product: 'test income', amount: 1000.00, account: account, type: OperationType.INCOME, period: Period.ofYears(2016), date: new Date()).save flush: true
-        def expenseOperaration = new Operation(product: 'test expense', amount: 500.00, account: account, type: OperationType.EXPENSE, period: Period.ofYears(2016), date: new Date()).save flush: true
+        def incomeOperaration = new Operation(product: new Product(name: 'test income'), amount: 1000.00, account: account, type: OperationType.INCOME, period: Period.ofYears(2016), date: new Date()).save flush: true
+        def expenseOperaration = new Operation(product: new Product(name: 'test expense'), amount: 500.00, account: account, type: OperationType.EXPENSE, period: Period.ofYears(2016), date: new Date()).save flush: true
     }
 
     def cleanup() {

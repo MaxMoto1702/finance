@@ -10,7 +10,7 @@ class ExpenseDocumentService {
     def process(ExpenseDocument document) {
         for (ExpenseDocumentRow row in document.rows) {
             def operation = new Operation(
-                    product: row.product,
+                    product: new Product(name: row.productName),
                     amount: row.amount,
                     account: document.account,
                     date: document.date,

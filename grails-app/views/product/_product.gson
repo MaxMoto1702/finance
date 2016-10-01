@@ -1,0 +1,7 @@
+import finance.Product
+
+model {
+	Product product
+}
+
+json g.render(product)

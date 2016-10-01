@@ -2,7 +2,7 @@ package finance
 
 class ExpenseDocumentRow {
 
-    String product
+    String productName
     BigDecimal amount
 
     Operation operation

@@ -4,7 +4,7 @@ import java.time.Period
 
 class Operation {
 
-    String product
+    Product product
     BigDecimal amount
     Account account
     OperationType type

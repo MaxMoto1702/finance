@@ -74,7 +74,7 @@ class AccountServiceSpec extends Specification {
         given:
         def balance = new Balance(date: new Date(), amount: 0.00)
         def account = new Account(name: 'removable account', balance: balance)
-        account.addToOperations(new Operation(product: 'test', amount: 0.00, type: OperationType.INCOME, period: Period.ZERO, date: new Date()))
+        account.addToOperations(new Operation(product: new Product(name: 'test'), amount: 0.00, type: OperationType.INCOME, period: Period.ZERO, date: new Date()))
 
         when:
         service.delete(account)

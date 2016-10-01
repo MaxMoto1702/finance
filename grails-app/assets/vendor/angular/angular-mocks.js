@@ -44,6 +44,7 @@ angular.mock.$Browser = function() {
   self.$$lastUrl = self.$$url; // used by url polling fn
   self.pollFns = [];
 
+  // TODO(vojta): remove this temporary api
   self.$$completeOutstandingRequest = angular.noop;
   self.$$incOutstandingRequestCount = angular.noop;
 
@@ -976,6 +977,7 @@ angular.mock.dump = function(object) {
       } else if (object instanceof Error) {
         out = object.stack || ('' + object.name + ': ' + object.message);
       } else {
+        // TODO(i): this prevents methods being logged,
         // we should have a better way to serialize objects
         out = angular.toJson(object, true);
       }
@@ -1337,6 +1339,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     };
   }
 
+  // TODO(vojta): change params to: method, url, data, headers, callback
   function $httpBackend(method, url, data, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploadEventHandlers) {
 
     var xhr = new MockXhr(),
