@@ -25,9 +25,9 @@ function IncomeShowController(IncomeDocument, $stateParams, $state) {
         });
     };
 
-    vm.rollback = function () {
+    vm.revoke = function () {
         vm.errors = undefined;
-        vm.income.$rollback(function () {}, function (response) {
+        vm.income.$revoke(function () {}, function (response) {
             var data = response.data;
             if (data.hasOwnProperty('message')) {
                 vm.errors = [data];

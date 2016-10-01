@@ -14,7 +14,7 @@ function ExpenseDocument($resource) {
             "query": {method: "GET", isArray: true},
             "get": {method: 'GET'},
             "process": {method: "POST", params: {action: 'process'}},
-            "rollback": {method: "POST", params: {action: 'rollback'}}
+            "revoke": {method: "POST", params: {action: 'revoke'}}
         }
     );
 

@@ -28,6 +28,8 @@ class ExpenseDocumentController {
             return
         }
 
+        expenseDocumentService.save(expenseDocument)
+
         if (expenseDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond expenseDocument.errors, view:'create', status: UNPROCESSABLE_ENTITY
@@ -76,7 +78,7 @@ class ExpenseDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond expenseDocument, [status: OK, view:"show"]
     }
 
     @Transactional
@@ -95,18 +97,18 @@ class ExpenseDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond expenseDocument, [status: OK, view:"show"]
     }
 
     @Transactional
-    def rollback(ExpenseDocument expenseDocument) {
+    def revoke(ExpenseDocument expenseDocument) {
         if (expenseDocument == null) {
             transactionStatus.setRollbackOnly()
             render status: NOT_FOUND
             return
         }
 
-        expenseDocumentService.rollback(expenseDocument)
+        expenseDocumentService.revoke(expenseDocument)
 
         if (expenseDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
@@ -114,6 +116,6 @@ class ExpenseDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond expenseDocument, [status: OK, view:"show"]
     }
 }

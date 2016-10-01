@@ -7,6 +7,7 @@ class ExpenseDocument {
     Account account
     BigDecimal amount
     String description
+    DocumentStatus status
 
     static hasMany = [
             rows: ExpenseDocumentRow

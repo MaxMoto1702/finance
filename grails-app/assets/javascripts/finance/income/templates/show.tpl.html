@@ -64,11 +64,17 @@
                     </div>
                     <!-- /.form-group.col-md-6 -->
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        <label for="status">Status</label>
+                        <div id="status" class="form-control" ng-bind="vm.income.status"></div>
+                    </div>
+                    <!-- /.form-group.col-md-6 -->
+
+                    <div class="form-group col-md-6">
                         <label for="description">Description</label>
                         <div id="description" class="form-control" ng-bind="vm.income.description"></div>
                     </div>
-                    <!-- /.form-group.col-md-12 -->
+                    <!-- /.form-group.col-md-6 -->
 
                     <div class="col-md-12">
                         <h3>
@@ -105,8 +111,8 @@
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
                 <a class="edit btn btn-default" ui-sref="income.edit({id: vm.income.id})">Edit</a>
-                <button class="delete btn btn-default" type="submit">Process</button>
-                <button class="delete btn btn-default" type="button" ng-click="vm.rollback()">Rollback</button>
+                <button class="delete btn btn-default" type="submit" ng-class="{hide: vm.income.status == 'PROCESSED'}">Process</button>
+                <button class="delete btn btn-default" type="button" ng-class="{hide: vm.income.status != 'PROCESSED'}" ng-click="vm.revoke()">Revoke</button>
                 <button class="delete btn btn-danger" type="button" ng-click="vm.delete()">Delete</button>
                 <a ui-sref="income.list" class="btn btn-default">Close</a>
                 <!--</div>-->

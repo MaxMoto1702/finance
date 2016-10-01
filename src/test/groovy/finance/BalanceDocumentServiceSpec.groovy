@@ -4,8 +4,6 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-import java.time.Period
-
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
@@ -34,7 +32,7 @@ class BalanceDocumentServiceSpec extends Specification {
 
     void "test process balance document"() {
         given:
-        def document = new BalanceDocument(date: new Date(), amount: 1000.00, description: 'test process')
+        def document = new BalanceDocument(date: new Date(), amount: 1000.00, description: 'test process', status: DocumentStatus.CREATED)
         document.addToRows(new BalanceDocumentRow(accountName: 'test process', amount: 1000.00))
         if (!document.save(flush: true)) println(document.errors)
 
@@ -48,30 +46,30 @@ class BalanceDocumentServiceSpec extends Specification {
 
     void "test rollback balance document"() {
         given:
-        def account = new Account(name: 'test rollback')
-        def document = new BalanceDocument(date: new Date(), description: 'test')
+        def account = new Account(name: 'test revoke')
+        def document = new BalanceDocument(date: new Date(), description: 'test', status: DocumentStatus.PROCESSED)
         document.addToRows(new BalanceDocumentRow(accountName: 'Account #1', amount: 500.00, account: account))
         if (!document.save(flush: true)) println(document.errors)
 
         when:
-        service.rollback(document)
+        service.revoke(document)
 
         then:
-        Account.countByName('test rollback') == 0
+        Account.countByName('test revoke') == 0
     }
 
-//    void "test deny rollback balance document"() {
+//    void "test deny revoke balance document"() {
 //        given:
-//        def account = new Account(name: 'test deny rollback')
+//        def account = new Account(name: 'test deny revoke')
 //        def operation = new Operation(product: 'test income', amount: 1000.00, account: account, type: OperationType.INCOME, period: Period.ofYears(2016), date: new Date()).save flush: true
 //        def document = new BalanceDocument(date: new Date(), description: 'test')
 //        document.addToRows(new BalanceDocumentRow(accountName: 'Account #1', amount: 500.00, account: account))
 //        if (!document.save(flush: true)) println(document.errors)
 //
 //        when:
-//        service.rollback(document)
+//        service.revoke(document)
 //
 //        then:
-//        Account.countByName('test deny rollback') == 1
+//        Account.countByName('test deny revoke') == 1
 //    }
 }

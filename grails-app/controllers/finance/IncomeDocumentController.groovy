@@ -28,13 +28,15 @@ class IncomeDocumentController {
             return
         }
 
+        incomeDocumentService.save incomeDocument
+
         if (incomeDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond incomeDocument.errors, view:'create', status: UNPROCESSABLE_ENTITY
             return
         }
 
-        incomeDocument.save flush:true
+//        incomeDocument.save flush:true
 
         respond incomeDocument, [status: CREATED, view:"show"]
     }
@@ -96,11 +98,11 @@ class IncomeDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond document, [status: OK, view:"show"]
     }
 
     @Transactional
-    def rollback(IncomeDocument  document) {
+    def revoke(IncomeDocument  document) {
 
         if (document == null) {
             transactionStatus.setRollbackOnly()
@@ -108,7 +110,7 @@ class IncomeDocumentController {
             return
         }
 
-        incomeDocumentService.rollback(document)
+        incomeDocumentService.revoke(document)
 
         if (document.hasErrors()) {
             transactionStatus.setRollbackOnly()
@@ -116,6 +118,6 @@ class IncomeDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond document, [status: OK, view:"show"]
     }
 }

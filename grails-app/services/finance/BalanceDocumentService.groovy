@@ -22,14 +22,20 @@ class BalanceDocumentService {
                 row.account = account
                 row.save(flush: true)
             } else {
-                document.errors.reject('balanceDocument.processing.notNotAllowed')
+                document.errors.reject('balanceDocument.process.notNotAllowed')
                 transactionStatus.setRollbackOnly()
                 return
             }
         }
+        document.status = DocumentStatus.PROCESSED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 
-    def rollback(BalanceDocument document) {
+    def revoke(BalanceDocument document) {
 //        для каждой записи документа найти счет
         for (BalanceDocumentRow row in document.rows) {
 //        удалить счет
@@ -41,15 +47,22 @@ class BalanceDocumentService {
                 row.save()
                 accountService.delete(account)
                 if (account.hasErrors()) {
-                    document.errors.reject('balanceDocument.rollback.notNotAllowed')
+                    document.errors.reject('balanceDocument.revoke.notNotAllowed')
                     transactionStatus.setRollbackOnly()
                     return
                 }
             }
         }
+        document.status = DocumentStatus.REVOKED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 
     BalanceDocument save(BalanceDocument document) {
+        document.status = DocumentStatus.CREATED
         def amount = document.rows.sum { BalanceDocumentRow row -> row.amount }
         document.amount = amount as BigDecimal
         if (document.validate())
@@ -66,6 +79,12 @@ class BalanceDocumentService {
                 return
             }
         }
-        document.delete(flush: true)
+//        document.delete(flush: true)
+        document.status = DocumentStatus.DELETED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 }

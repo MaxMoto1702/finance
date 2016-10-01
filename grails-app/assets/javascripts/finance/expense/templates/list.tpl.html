@@ -45,6 +45,7 @@
                         <th>Date</th>
                         <th>To</th>
                         <th>Amount</th>
+                        <th>Status</th>
                         <th>Description</th>
                         <th>Closed</th>
                     </tr>
@@ -54,6 +55,7 @@
                         <td>{{expense.date | date : 'yyyy-MM-dd'}}</td>
                         <td>{{expense.company}}</td>
                         <td>{{expense.amount}}</td>
+                        <td>{{expense.status}}</td>
                         <td>{{expense.description}}</td>
                         <td><i class="fa"
                                ng-class="{'fa-lock': expense.closeDate != null, 'fa-unlock':  expense.closeDate == null}"

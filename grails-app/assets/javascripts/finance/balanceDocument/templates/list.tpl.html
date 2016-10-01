@@ -44,8 +44,9 @@
                     <tr>
                         <th>Date</th>
                         <th>Amount</th>
+                        <th>Status</th>
                         <th>Description</th>
-                        <th>Closed</th>
+                        <!--<th>Closed</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -53,10 +54,11 @@
                         ng-click="vm.go('balanceDocument.show', {id: balanceDocument.id})">
                         <td>{{balanceDocument.date | date : 'yyyy-MM-dd'}}</td>
                         <td>{{balanceDocument.amount}}</td>
+                        <td>{{balanceDocument.status}}</td>
                         <td>{{balanceDocument.description}}</td>
-                        <td><i class="fa"
-                               ng-class="{'fa-lock': balanceDocument.closeDate != null, 'fa-unlock':  balanceDocument.closeDate == null}"
-                               aria-hidden="true"></i></td>
+                        <!--<td><i class="fa"-->
+                               <!--ng-class="{'fa-lock': balanceDocument.closeDate != null, 'fa-unlock':  balanceDocument.closeDate == null}"-->
+                               <!--aria-hidden="true"></i></td>-->
                     </tr>
                     </tbody>
                 </table>

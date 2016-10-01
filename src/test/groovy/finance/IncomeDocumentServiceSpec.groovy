@@ -18,7 +18,8 @@ class IncomeDocumentServiceSpec extends Specification {
                 company: 'test company',
                 date: new Date(),
                 amount: 1000.00,
-                description: 'test income'
+                description: 'test income',
+                status: DocumentStatus.CREATED
         )
         incomeDocument.addToRows(new IncomeDocumentRow(product: 'test income product', amount: 1000.00))
         if (incomeDocument.validate()) incomeDocument.save(flush: true) else println(incomeDocument.errors)
@@ -43,6 +44,7 @@ class IncomeDocumentServiceSpec extends Specification {
 
         then:
         IncomeDocument.findByDescription('test').amount == 750.00
+        IncomeDocument.findByDescription('test').status == DocumentStatus.CREATED
     }
 
     void "test processing income document"() {

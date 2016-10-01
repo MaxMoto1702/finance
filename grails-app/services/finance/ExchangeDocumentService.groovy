@@ -21,7 +21,7 @@ class ExchangeDocumentService {
             document.incomeOperation = incomeOperation
             document.save(flush: true)
         } else {
-            document.errors.reject('exchangeDocument.processing.notNotAllowed')
+            document.errors.reject('exchangeDocument.process.notNotAllowed')
             transactionStatus.setRollbackOnly()
             return
         }
@@ -38,12 +38,18 @@ class ExchangeDocumentService {
             document.expenseOperation = expenseOperation
             document.save(flush: true)
         } else {
-            document.errors.reject('exchangeDocument.processing.notNotAllowed')
+            document.errors.reject('exchangeDocument.process.notNotAllowed')
+            transactionStatus.setRollbackOnly()
+        }
+        document.status = DocumentStatus.PROCESSED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
             transactionStatus.setRollbackOnly()
         }
     }
 
-    def rollback(ExchangeDocument document) {
+    def revoke(ExchangeDocument document) {
         if (document.incomeOperation.closeDate == null && document.expenseOperation.closeDate == null) {
             def incomeOperation = document.incomeOperation
             def expenseOperation = document.expenseOperation
@@ -53,9 +59,22 @@ class ExchangeDocumentService {
             incomeOperation.delete(flush: true)
             expenseOperation.delete(flush: true)
         } else {
-            document.errors.reject('exchangeDocument.rollback.notNotAllowed')
+            document.errors.reject('exchangeDocument.revoke.notNotAllowed')
             transactionStatus.setRollbackOnly()
         }
+        document.status = DocumentStatus.REVOKED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
+    }
+
+    def save(ExchangeDocument document) {
+        document.status = DocumentStatus.CREATED
+        if (document.validate())
+            document.save flush: true
+        else log.error(document.errors)
     }
 
     def delete(ExchangeDocument document) {
@@ -64,6 +83,12 @@ class ExchangeDocumentService {
             transactionStatus.setRollbackOnly()
             return
         }
-        document.delete(flush: true)
+//        document.delete(flush: true)
+        document.status = DocumentStatus.DELETED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 }

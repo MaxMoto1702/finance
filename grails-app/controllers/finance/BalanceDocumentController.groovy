@@ -1,7 +1,5 @@
 package finance
 
-import java.beans.Transient
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -100,11 +98,11 @@ class BalanceDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond balanceDocument, [status: OK, view:"show"]
     }
 
     @Transactional
-    def rollback(BalanceDocument balanceDocument) {
+    def revoke(BalanceDocument balanceDocument) {
 
         if (balanceDocument == null) {
             transactionStatus.setRollbackOnly()
@@ -112,7 +110,7 @@ class BalanceDocumentController {
             return
         }
 
-        balanceDocumentService.rollback balanceDocument
+        balanceDocumentService.revoke balanceDocument
 
         if (balanceDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
@@ -120,6 +118,6 @@ class BalanceDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond balanceDocument, [status: OK, view:"show"]
     }
 }

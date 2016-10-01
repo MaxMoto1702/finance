@@ -7,6 +7,7 @@ class ExchangeDocument {
     Account targetAccount
     BigDecimal amount
     String description
+    DocumentStatus status
 
     Operation incomeOperation
     Operation expenseOperation

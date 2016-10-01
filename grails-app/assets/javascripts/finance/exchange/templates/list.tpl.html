@@ -46,6 +46,7 @@
                         <th>From</th>
                         <th>To</th>
                         <th>Amount</th>
+                        <th>Status</th>
                         <th>Description</th>
                         <th>Closed</th>
                     </tr>
@@ -57,6 +58,7 @@
                         <td>{{exchange.sourceAccount.name}}</td>
                         <td>{{exchange.targetAccount.name}}</td>
                         <td>{{exchange.amount}}</td>
+                        <td>{{exchange.status}}</td>
                         <td>{{exchange.description}}</td>
                         <td><i class="fa"
                                ng-class="{'fa-lock': exchange.closeDate != null, 'fa-unlock':  exchange.closeDate == null}"

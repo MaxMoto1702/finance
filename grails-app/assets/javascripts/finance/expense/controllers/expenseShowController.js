@@ -25,9 +25,9 @@ function ExpenseShowController(ExpenseDocument, $stateParams, $state) {
         });
     };
 
-    vm.rollback = function () {
+    vm.revoke = function () {
         vm.errors = undefined;
-        vm.expense.$rollback(function () {}, function (response) {
+        vm.expense.$revoke(function () {}, function (response) {
             var data = response.data;
             if (data.hasOwnProperty('message')) {
                 vm.errors = [data];

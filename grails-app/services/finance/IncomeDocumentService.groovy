@@ -22,14 +22,20 @@ class IncomeDocumentService {
                 row.operation = operation
                 row.save(flush: true)
             } else {
-                document.errors.reject('incomeDocument.processing.notNotAllowed')
+                document.errors.reject('incomeDocument.process.notNotAllowed')
                 transactionStatus.setRollbackOnly()
                 return
             }
         }
+        document.status = DocumentStatus.PROCESSED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 
-    def rollback(IncomeDocument document) {
+    def revoke(IncomeDocument document) {
         for (IncomeDocumentRow row in document.rows) {
             if (row.operation.closeDate == null) {
                 def operation = row.operation
@@ -37,14 +43,21 @@ class IncomeDocumentService {
                 row.save(flush: true)
                 operation.delete(flush: true)
             } else {
-                document.errors.reject('incomeDocument.rollback.notNotAllowed')
+                document.errors.reject('incomeDocument.revoke.notNotAllowed')
                 transactionStatus.setRollbackOnly()
                 return
             }
         }
+        document.status = DocumentStatus.REVOKED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 
     IncomeDocument save(IncomeDocument document) {
+        document.status = DocumentStatus.CREATED
         def amount = document.rows.sum { IncomeDocumentRow row -> row.amount }
         document.amount = amount as BigDecimal
         if (document.validate()) document.save flush: true else log.error(document.errors)
@@ -58,6 +71,12 @@ class IncomeDocumentService {
                 return
             }
         }
-        document.delete(flush: true)
+//        document.delete(flush: true)
+        document.status = DocumentStatus.DELETED
+        if (document.validate()) {
+            document.save flush: true
+        } else {
+            transactionStatus.setRollbackOnly()
+        }
     }
 }

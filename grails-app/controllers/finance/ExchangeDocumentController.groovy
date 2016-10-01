@@ -28,13 +28,15 @@ class ExchangeDocumentController {
             return
         }
 
+        exchangeDocumentService.save(exchangeDocument)
+
         if (exchangeDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond exchangeDocument.errors, view:'create', status: UNPROCESSABLE_ENTITY
             return
         }
 
-        exchangeDocument.save flush:true
+//        exchangeDocument.save flush:true
 
         respond exchangeDocument, [status: CREATED, view:"show"]
     }
@@ -88,18 +90,18 @@ class ExchangeDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond exchangeDocument, [status: CREATED, view:"show"]
     }
 
     @Transactional
-    def rollback(ExchangeDocument exchangeDocument) {
+    def revoke(ExchangeDocument exchangeDocument) {
         if (exchangeDocument == null) {
             transactionStatus.setRollbackOnly()
             render status: NOT_FOUND
             return
         }
 
-        exchangeDocumentService.rollback(exchangeDocument)
+        exchangeDocumentService.revoke(exchangeDocument)
 
         if (exchangeDocument.hasErrors()) {
             transactionStatus.setRollbackOnly()
@@ -107,6 +109,6 @@ class ExchangeDocumentController {
             return
         }
 
-        render status: NO_CONTENT
+        respond exchangeDocument, [status: CREATED, view:"show"]
     }
 }
