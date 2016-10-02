@@ -33,7 +33,7 @@ after_failure:
 #OPTIONAL before_deploy
 before_deploy:
     - mkdir -p build/deploy
-    - cp build/libs/finance-0.1.war build/deploy/finance.war
+    - cp build/libs/finance-0.1.0.war build/deploy/finance.war
     - cp build/asciidoc/asciidoc.war build/deploy/finance-documentation.war
     - cp build/reports/reports.war build/deploy/finance-reports.war
     - ls -l build/deploy
