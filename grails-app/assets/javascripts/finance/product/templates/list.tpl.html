@@ -33,16 +33,14 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Closed</th>
+                        <th>Parent</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="product in vm.productList"
                         ng-click="vm.go('product.show', {id: product.id})">
                         <td>{{product.name}}</td>
-                        <td><i class="fa"
-                               ng-class="{'fa-lock': product.closeDate != null, 'fa-unlock':  product.closeDate == null}"
-                               aria-hidden="true"></i></td>
+                        <td>{{product.parent}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -54,5 +52,48 @@
 
     </div>
     <!-- /.row -->
+
+    <!--<div class="row">-->
+        <!--<div class="col-md-12">-->
+            <!--<div class="list-group">-->
+                <!--<a href="javascript:;"-->
+                   <!--class="list-group-item"-->
+                   <!--ng-repeat-start="product in vm.productList"-->
+                   <!--ng-click="product.expanded = !product.expanded"-->
+                   <!--ng-dblclick="vm.go('product.show', {id: product.id})">-->
+                    <!--{{product.name}}-->
+                <!--</a>-->
+                <!--<div ng-repeat-end>-->
+                    <!--<a href="javascript:;"-->
+                       <!--class="list-group-item"-->
+                       <!--style="padding-left: 25px"-->
+                       <!--ng-if="product.expanded"-->
+                       <!--ng-repeat-start="subProduct in product.subProducts"-->
+                       <!--ng-click="subProduct.expanded = !subProduct.expanded"-->
+                       <!--ng-dblclick="vm.go('product.show', {id: subProducts.id})">-->
+                        <!--{{subProduct.name}} ({{subProduct.expanded}})-->
+                    <!--</a>-->
+                    <!--<div ng-repeat-end>-->
+                        <!--<a href="javascript:;"-->
+                           <!--class="list-group-item"-->
+                           <!--style="padding-left: 25px"-->
+                           <!--ng-if="subProduct.expanded"-->
+                           <!--ng-repeat="subProduct1 in subProduct.subProducts"-->
+                           <!--ng-dblclick="vm.go('product.show', {id: subProduct1.id})">-->
+                            <!--{{subProduct1.name}}-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<a href="javascript:;" class="list-group-item">Morbi leo risus</a>-->
+                <!--<a href="javascript:;" class="list-group-item">Porta ac consectetur ac</a>-->
+                <!--<a href="javascript:;" class="list-group-item">Vestibulum at eros</a>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.list-group &ndash;&gt;-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash; /.col-lg-12 &ndash;&gt;-->
+
+    <!--</div>-->
+    <!--&lt;!&ndash; /.row &ndash;&gt;-->
 </div>
 <!-- /#list-product -->

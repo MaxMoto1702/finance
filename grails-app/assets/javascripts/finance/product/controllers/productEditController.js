@@ -7,6 +7,7 @@ angular
 function ProductEditController(Product, $stateParams, $state) {
     var vm = this;
 
+    vm.products = Product.list();
 
     Product.get({id: $stateParams.id}, function (data) {
         vm.product = new Product(data);

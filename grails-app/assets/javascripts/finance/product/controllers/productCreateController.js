@@ -10,6 +10,8 @@ function ProductCreateController(Product, $state) {
 
     vm.product = new Product();
 
+    vm.products = Product.list();
+
     vm.saveProduct = function () {
         vm.errors = undefined;
         vm.product.$save({}, function () {
