@@ -44,8 +44,7 @@ deploy:
     skip_cleanup: true
     script: scp build/deploy/*.war deployer@serebryanskiy.site:~/tomcat8/
     on:
-        branch: dev
-#        branch: master
+        branch: master
 
 #OPTIONAL after_deploy
 
