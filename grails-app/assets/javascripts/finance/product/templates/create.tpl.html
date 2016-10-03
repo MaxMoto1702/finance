@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header hidden-xs">
-                Products
-                <small>new</small>
+                {{ 'PRODUCTS.CREATE.TITLE' | translate }}
+                <small>{{ 'PRODUCTS.CREATE.SUB_TITLE' | translate }}</small>
             </h1>
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> <a ui-sref="product.list">Products</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> New
-                </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+            <!--<li>-->
+            <!--<i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>-->
+            <!--</li>-->
+            <!--<li class="active">-->
+            <!--<i class="fa fa-file"></i> <a ui-sref="product.list">Products</a>-->
+            <!--</li>-->
+            <!--<li class="active">-->
+            <!--<i class="fa fa-file"></i> New-->
+            <!--</li>-->
+            <!--</ol>-->
             <!--/.breadcrumb-->
 
         </div>
@@ -40,12 +40,20 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form name="saveProduct" ng-submit="vm.saveProduct()">
+            <form name="saveProduct"
+                  ng-submit="vm.saveProduct()">
                 <ng-include src="'/finance/product/form.html'"></ng-include>
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
-                <button type="submit" name="create" class="btn btn-primary">Save</button>
-                <a ui-sref="product.list" class="btn btn-default">Cancel</a>
+                <button type="submit"
+                        name="create"
+                        class="btn btn-primary">
+                    {{ 'PRODUCTS.CREATE.ACTIONS.SAVE' | translate }}
+                </button>
+                <a ui-sref="product.list"
+                   class="btn btn-default">
+                    {{ 'PRODUCTS.CREATE.ACTIONS.CANCEL' | translate }}
+                </a>
                 <!--</div>-->
                 <!-- /.panel-body -->
 

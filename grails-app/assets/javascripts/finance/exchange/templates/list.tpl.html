@@ -3,23 +3,23 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Exchange Documents
-                <small>list</small>
+                {{ 'EXCHANGE_DOCUMENTS.LIST.TITLE' | translate }}
+                <small>{{ 'EXCHANGE_DOCUMENTS.LIST.SUB_TITLE' | translate }}</small>
             </h1>
 
-            <button type="button" class="btn btn-default" style="float: right" data-toggle="popover"
-                    data-placement="left" title="Filters" data-html="true"
-                    data-content="<form action='exchange.html' class='filter'><div class='form-group'><label>Name</label><input='text' class='form-control'></div><button type='submit' class='btn btn-default'>Search</button></form>">
-                <i class="fa fa-filter" aria-hidden="true"></i></button>
+            <!--<button type="button" class="btn btn-default" style="float: right" data-toggle="popover"-->
+                    <!--data-placement="left" title="Filters" data-html="true"-->
+                    <!--data-content="<form action='exchange.html' class='filter'><div class='form-group'><label>Name</label><input='text' class='form-control'></div><button type='submit' class='btn btn-default'>Search</button></form>">-->
+                <!--<i class="fa fa-filter" aria-hidden="true"></i></button>-->
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> Exchange Documents
-                </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+                <!--<li>-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> Exchange Documents-->
+                <!--</li>-->
+            <!--</ol>-->
             <!--/.breadcrumb-->
 
         </div>
@@ -30,7 +30,10 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a ui-sref="exchange.create" class="btn btn-default">Create exchange document</a>
+                    <a ui-sref="exchange.create"
+                       class="btn btn-default">
+                        {{ 'EXCHANGE_DOCUMENTS.LIST.ACTIONS.CREATE' | translate }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -42,13 +45,27 @@
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th>Description</th>
-                        <th>Closed</th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.DATE' | translate }}
+                        </th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.FROM' | translate }}
+                        </th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.TO' | translate }}
+                        </th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.AMOUNT' | translate }}
+                        </th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.STATUS' | translate }}
+                        </th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.DESCRIPTION' | translate }}
+                        </th>
+                        <th>
+                            {{ 'EXCHANGE_DOCUMENTS.LIST.HEADERS.CLOSED' | translate }}
+                        </th>
                     </tr>
                     </thead>
                     <tbody>

@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header hidden-xs">
-                Products
-                <small>show</small>
+                {{ 'PRODUCTS.SHOW.TITLE' | translate }}
+                <small>{{ 'PRODUCTS.SHOW.SUB_TITLE' | translate }}</small>
             </h1>
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> <a ui-sref="product.list">Products</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> Show
-                </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+                <!--<li>-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="product.list">Products</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> Show-->
+                <!--</li>-->
+            <!--</ol>-->
             <!--/.breadcrumb-->
 
         </div>
@@ -43,17 +43,30 @@
             <form ng-submit="vm.delete()">
                 <fieldset class="row">
                     <div class="form-group col-sm-12">
-                        <label for="name">Name</label>
-                        <div class="form-control-static" id="name" ng-bind="vm.product.name"></div>
+                        <label for="name">
+                            {{ 'PRODUCTS.SHOW.FIELDS.NAME' | translate }}
+                        </label>
+                        <div class="form-control-static"
+                             id="name"
+                             ng-bind="vm.product.name">
+                        </div>
                     </div>
                 </fieldset>
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
-                <a class="edit btn btn-default" ui-sref="product.edit({id: vm.product.id})">Edit</a>
-                <button class="delete btn btn-danger" type="submit" onclick="return confirm('Are you sure?');">
-                    Delete
+                <a class="edit btn btn-default"
+                   ui-sref="product.edit({id: vm.product.id})">
+                    {{ 'PRODUCTS.SHOW.ACTIONS.EDIT' | translate }}
+                </a>
+                <button class="delete btn btn-danger"
+                        type="submit"
+                        onclick="return confirm('Are you sure?');">
+                    {{ 'PRODUCTS.SHOW.ACTIONS.DELETE' | translate }}
                 </button>
-                <a ui-sref="product.list" class="btn btn-default">Close</a>
+                <a ui-sref="product.list"
+                   class="btn btn-default">
+                    {{ 'PRODUCTS.SHOW.ACTIONS.CLOSE' | translate }}
+                </a>
                 <!--</div>-->
                 <!-- /.panel-body -->
 

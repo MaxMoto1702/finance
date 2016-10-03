@@ -115,6 +115,9 @@ clientDependencies {
 //            include 'fonts/fontawesome-webfont.eot'
 //            include 'fonts/fontawesome-webfont.eot'
         }
+        'angular-translate'('2.12.1', into: 'angular') {
+            include 'angular-translate.js'
+        }
     }
 }
 

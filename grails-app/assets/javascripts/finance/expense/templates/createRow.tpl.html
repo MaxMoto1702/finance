@@ -1,20 +1,38 @@
 <form id="addExpenseDocumentRow" ng-submit="vm.save()">
-    <div class="modal-title"></div>
+    <div class="modal-title">
+    </div>
     <div class="modal-body">
         <fieldset>
             <div class="form-group">
-                <label for="product">Product</label>
-                <!--<input id="product" type="text" class="form-control" ng-model="vm.row.product">-->
-                <product-select id="product" name="product" ng-model="vm.row.productName"></product-select>
+                <label for="product">
+                    {{ 'EXPENSE_DOCUMENTS.FORM.CONTENT_FORM.FIELDS.PRODUCT_NAME' | translate }}
+                </label>
+                <product-select id="product"
+                                name="product"
+                                ng-model="vm.row.productName">
+                </product-select>
             </div>
             <div class="form-group">
-                <label for="amount">Amount</label>
-                <input id="amount" type="number" class="form-control" ng-model="vm.row.amount">
+                <label for="amount">
+                    {{ 'EXPENSE_DOCUMENTS.FORM.CONTENT_FORM.FIELDS.AMOUNT' | translate }}
+                </label>
+                <input id="amount"
+                       type="number"
+                       class="form-control"
+                       ng-model="vm.row.amount">
             </div>
         </fieldset>
     </div>
     <div class="modal-footer">
-        <button id="submitAddExpenseDocumentRow" type="submit" class="btn btn-primary">Save</button>
-        <button id="cancelAddExpenseDocumentRow" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+        <button id="submitAddExpenseDocumentRow"
+                type="submit"
+                class="btn btn-primary">
+            {{ 'EXPENSE_DOCUMENTS.FORM.CONTENT_FORM.ACTIONS.SAVE' | translate }}
+        </button>
+        <button id="cancelAddExpenseDocumentRow"
+                class="btn btn-default"
+                ng-click="vm.cancel()">
+            {{ 'EXPENSE_DOCUMENTS.FORM.CONTENT_FORM.ACTIONS.CANCEL' | translate }}
+        </button>
     </div>
 </form>

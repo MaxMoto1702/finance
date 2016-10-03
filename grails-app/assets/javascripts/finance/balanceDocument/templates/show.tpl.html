@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header hidden-xs">
-                Balance Document
-                <small>show</small>
+                {{ 'BALANCE_DOCUMENTS.SHOW.TITLE' | translate }}
+                <small>{{ 'BALANCE_DOCUMENTS.SHOW.SUB_TITLE' | translate }}</small>
             </h1>
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> <a ui-sref="balanceDocument.list">Balance Documents</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> Show
-                </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+                <!--<li>-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="balanceDocument.list">Balance Documents</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> Show-->
+                <!--</li>-->
+            <!--</ol>-->
             <!--/.breadcrumb-->
 
         </div>
@@ -44,26 +44,34 @@
             <form ng-submit="vm.process()">
                 <fieldset class="row">
                     <div class="form-group col-md-6">
-                        <label for="date">Date</label>
+                        <label for="date">
+                            {{ 'BALANCE_DOCUMENTS.SHOW.FIELDS' | translate }}
+                        </label>
                         <div id="date" class="form-control-static">{{vm.balanceDocument.date | date : 'yyyy-MM-dd'}}
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="amount">Amount</label>
+                        <label for="amount">
+                            {{ 'BALANCE_DOCUMENTS.SHOW.FIELDS' | translate }}
+                        </label>
                         <div id="amount" class="form-control-static">{{vm.balanceDocument.amount}}</div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="status">Status</label>
+                        <label for="status">
+                            {{ 'BALANCE_DOCUMENTS.SHOW.FIELDS' | translate }}
+                        </label>
                         <div id="status" class="form-control-static">{{vm.balanceDocument.status}}</div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="description">Description</label>
+                        <label for="description">
+                            {{ 'BALANCE_DOCUMENTS.SHOW.FIELDS' | translate }}
+                        </label>
                         <div id="description" class="form-control-static">{{vm.balanceDocument.description}}</div>
                     </div>
 
                     <div class="col-md-12">
                         <h3>
-                            Details
+                            {{ 'BALANCE_DOCUMENTS.SHOW.CONTENT_LIST.TITLE' | translate }}
                             <a href="javascript:;" ng-click="vm.addRow()" class="btn btn-default btn-sm" style="float: right">
                                 <i class="fa fa-plus" aria-hidden="true"></i> Add
                             </a>
@@ -73,8 +81,12 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Account name</th>
-                                    <th>Amount</th>
+                                    <th>
+                                        {{ 'BALANCE_DOCUMENTS.SHOW.CONTENT_LIST.HEADERS.ACCOUNT_NAME' | translate }}
+                                    </th>
+                                    <th>
+                                        {{ 'BALANCE_DOCUMENTS.SHOW.CONTENT_LIST.HEADERS.START_AMOUNT' | translate }}
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -94,11 +106,31 @@
 
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
-                <a class="edit btn btn-default" ui-sref="balanceDocument.edit({id: vm.balanceDocument.id})">Edit</a>
-                <button class="delete btn btn-default" type="submit" ng-class="{hide: vm.balanceDocument.status == 'PROCESSED'}">Process</button>
-                <button class="delete btn btn-default" type="button" ng-class="{hide: vm.balanceDocument.status != 'PROCESSED'}" ng-click="vm.revoke()">Revoke</button>
-                <button class="delete btn btn-danger" type="button" ng-click="vm.delete()">Delete</button>
-                <a ui-sref="balanceDocument.list" class="btn btn-default">Close</a>
+                <a class="edit btn btn-default"
+                   ui-sref="balanceDocument.edit({id: vm.balanceDocument.id})">
+                    {{ 'BALANCE_DOCUMENTS.SHOW.ACTIONS.EDIT' | translate }}
+                </a>
+                <button class="delete btn btn-default"
+                        type="submit"
+                        ng-if="vm.balanceDocument.status != 'PROCESSED'">
+                    {{ 'BALANCE_DOCUMENTS.SHOW.ACTIONS.PROCESS' | translate }}
+                </button>
+                <button class="delete btn btn-default"
+                        type="button"
+                        ng-if="vm.balanceDocument.status == 'PROCESSED'"
+                        ng-click="vm.revoke()">
+                    {{ 'BALANCE_DOCUMENTS.SHOW.ACTIONS.REVOKE' | translate }}
+                </button>
+                <button class="delete btn btn-danger"
+                        type="button"
+                        ng-if="vm.balanceDocument.status != 'PROCESSED'"
+                        ng-click="vm.delete()">
+                    {{ 'BALANCE_DOCUMENTS.SHOW.ACTIONS.DELETE' | translate }}
+                </button>
+                <a ui-sref="balanceDocument.list"
+                   class="btn btn-default">
+                    {{ 'BALANCE_DOCUMENTS.SHOW.ACTIONS.CLOSE' | translate }}
+                </a>
                 <!--</div>-->
                 <!-- /.panel-body -->
 

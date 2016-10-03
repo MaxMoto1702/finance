@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header hidden-xs">
-                Income Document
-                <small>new</small>
+                {{ 'INCOME_DOCUMENTS.CREATE.TITLE' | translate }}
+                <small>{{ 'INCOME_DOCUMENTS.CREATE.SUB_TITLE' | translate }}</small>
             </h1>
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> <a ui-sref="income.list">Income Documents</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> New
-                </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+            <!--<li>-->
+            <!--<i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>-->
+            <!--</li>-->
+            <!--<li class="active">-->
+            <!--<i class="fa fa-file"></i> <a ui-sref="income.list">Income Documents</a>-->
+            <!--</li>-->
+            <!--<li class="active">-->
+            <!--<i class="fa fa-file"></i> New-->
+            <!--</li>-->
+            <!--</ol>-->
             <!--/.breadcrumb-->
 
         </div>
@@ -38,12 +38,20 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form name="saveIncome" ng-submit="vm.saveIncome()">
+            <form name="saveIncome"
+                  ng-submit="vm.saveIncome()">
                 <ng-include src="'/finance/income/form.html'"></ng-include>
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
-                <button type="submit" name="create" class="btn btn-primary">Save</button>
-                <a ui-sref="income.list" class="btn btn-default">Cancel</a>
+                <button type="submit"
+                        name="create"
+                        class="btn btn-primary">
+                    {{ 'INCOME_DOCUMENTS.CREATE.ACTIONS.SAVE' | translate }}
+                </button>
+                <a ui-sref="income.list"
+                   class="btn btn-default">
+                    {{ 'INCOME_DOCUMENTS.CREATE.ACTIONS.CANCEL' | translate }}
+                </a>
                 <!--</div>-->
                 <!-- /.panel-body -->
 

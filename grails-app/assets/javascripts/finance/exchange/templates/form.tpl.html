@@ -1,28 +1,63 @@
 <fieldset class="row">
     <div class="form-group col-md-6">
-        <label for="date">Date</label>
+        <label for="date">
+            {{ 'EXCHANGE_DOCUMENTS.FORM.FIELDS.DATE' | translate }}
+        </label>
         <div class="input-group">
-            <input id="date" name="date" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy"
-                   ng-model="vm.exchange.date" is-open="popup1.opened" ng-click="popup1.opened = true"/>
-            <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="popup1.opened = true"><i
-                    class="fa fa-calendar"></i></button></span>
+            <input id="date"
+                   name="date"
+                   type="text"
+                   class="form-control"
+                   uib-datepicker-popup="dd.MM.yyyy"
+                   ng-model="vm.exchange.date"
+                   is-open="popup1.opened"
+                   ng-click="popup1.opened = true"/>
+            <span class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="popup1.opened = true">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
         </div>
     </div>
     <div class="form-group col-md-6">
-        <label for="amount">Amount</label>
-        <input id="amount" name="amount" type="number" class="form-control" ng-model="vm.exchange.amount"/>
+        <label for="amount">
+            {{ 'EXCHANGE_DOCUMENTS.FORM.FIELDS.AMOUNT' | translate }}
+        </label>
+        <input id="amount"
+               name="amount"
+               type="number"
+               class="form-control"
+               ng-model="vm.exchange.amount"/>
     </div>
     <div class="form-group col-md-6">
-        <label for="sourceAccount">From account</label>
-        <account-select id="sourceAccount" name="sourceAccount" ng-model="vm.exchange.sourceAccount"></account-select>
+        <label for="sourceAccount">
+            {{ 'EXCHANGE_DOCUMENTS.FORM.FIELDS.FROM' | translate }}
+        </label>
+        <account-select id="sourceAccount"
+                        name="sourceAccount"
+                        ng-model="vm.exchange.sourceAccount">
+        </account-select>
     </div>
     <div class="form-group col-md-6">
-        <label for="targetAccount">To account</label>
-        <account-select id="targetAccount" name="targetAccount" ng-model="vm.exchange.targetAccount"></account-select>
+        <label for="targetAccount">
+            {{ 'EXCHANGE_DOCUMENTS.FORM.FIELDS.TO' | translate }}
+        </label>
+        <account-select id="targetAccount"
+                        name="targetAccount"
+                        ng-model="vm.exchange.targetAccount">
+        </account-select>
     </div>
     <div class="form-group col-md-12">
-        <label for="description">Description</label>
-        <input id="description" name="description" type="text" class="form-control" ng-model="vm.exchange.description"/>
+        <label for="description">
+            {{ 'EXCHANGE_DOCUMENTS.FORM.FIELDS.DESCRIPTION' | translate }}
+        </label>
+        <input id="description"
+               name="description"
+               type="text"
+               class="form-control"
+               ng-model="vm.exchange.description"/>
     </div>
 </fieldset>
 <!-- /.row -->

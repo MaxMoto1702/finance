@@ -19,7 +19,7 @@
         window.contextPath = "${request.contextPath}";
     </script>
 
-    <title>Finance</title>
+    <title><g:message code="application.title"/></title>
 </head>
 
 <body>
@@ -27,6 +27,14 @@
 <div id="wrapper">
 
     <navigation></navigation>
+
+    %{--<div id="page-wrapper" ng-controller="IndexController as vm">--}%
+        %{--<div class="row">--}%
+            %{--<div class="col-md-12">--}%
+                %{--<h1>{{vm.test}}</h1>--}%
+            %{--</div>--}%
+        %{--</div>--}%
+    %{--</div>--}%
 
     <div id="page-wrapper" ui-view>
     </div>
