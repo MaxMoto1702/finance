@@ -13,6 +13,7 @@ class UrlMappings {
         post "/$controller/$id/$action(.$format)?"()
 
         "/"(view: '/index')
+        "/ex1"(view: '/ex1')
         "500"(view: '/error')
         "404"(view: '/notFound')
     }

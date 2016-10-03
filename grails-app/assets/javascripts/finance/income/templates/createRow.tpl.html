@@ -1,20 +1,38 @@
 <form id="addIncomeDocumentRow" ng-submit="vm.save()">
-    <div class="modal-title"></div>
+    <div class="modal-title">
+    </div>
     <div class="modal-body">
         <fieldset>
             <div class="form-group">
-                <label for="product">Product</label>
-                <!--<input id="product" type="text" class="form-control" ng-model="vm.row.product">-->
-                <product-select id="product" name="product" ng-model="vm.row.productName"></product-select>
+                <label for="product">
+                    {{ 'INCOME_DOCUMENTS.FORM.CONTENT_FORM.FIELDS.PRODUCT_NAME' | translate }}
+                </label>
+                <product-select id="product"
+                                name="product"
+                                ng-model="vm.row.productName">
+                </product-select>
             </div>
             <div class="form-group">
-                <label for="amount">Amount</label>
-                <input id="amount" type="number" class="form-control" ng-model="vm.row.amount">
+                <label for="amount">
+                    {{ 'INCOME_DOCUMENTS.FORM.CONTENT_FORM.FIELDS.AMOUNT' | translate }}
+                </label>
+                <input id="amount"
+                       type="number"
+                       class="form-control"
+                       ng-model="vm.row.amount">
             </div>
         </fieldset>
     </div>
     <div class="modal-footer">
-        <button id="submitAddIncomeDocumentRow" type="submit" class="btn btn-primary">Save</button>
-        <button id="cancelAddIncomeDocumentRow" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+        <button id="submitAddIncomeDocumentRow"
+                type="submit"
+                class="btn btn-primary">
+            {{ 'INCOME_DOCUMENTS.FORM.CONTENT_FORM.ACTIONS.SAVE' | translate }}
+        </button>
+        <button id="cancelAddIncomeDocumentRow"
+                class="btn btn-default"
+                ng-click="vm.cancel()">
+            {{ 'INCOME_DOCUMENTS.FORM.CONTENT_FORM.ACTIONS.CANCEL' | translate }}
+        </button>
     </div>
 </form>

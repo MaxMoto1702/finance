@@ -1,44 +1,83 @@
 <fieldset class="row">
     <div class="form-group col-md-6">
-        <label for="date">Date</label>
+        <label for="date">
+            {{ 'INCOME_DOCUMENTS.FORM.FIELDS.DATE' | translate }}
+        </label>
         <div class="input-group">
-            <input id="date" name="date" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy"
-                   ng-model="vm.income.date" is-open="popup1.opened" ng-click="popup1.opened = true"/>
-            <span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="popup1.opened = true"><i
-                    class="fa fa-calendar"></i></button></span>
+            <input id="date"
+                   name="date"
+                   type="text"
+                   class="form-control"
+                   uib-datepicker-popup="dd.MM.yyyy"
+                   ng-model="vm.income.date"
+                   is-open="popup1.opened"
+                   ng-click="popup1.opened = true"/>
+            <span class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="popup1.opened = true">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
         </div>
     </div>
     <!-- /.form-group.col-md-6 -->
 
     <div class="form-group col-md-6">
-        <label for="amount">Amount</label>
-        <input id="amount" name="amount" type="number" class="form-control" ng-model="vm.income.amount" readonly/>
+        <label for="amount">
+            {{ 'INCOME_DOCUMENTS.FORM.FIELDS.AMOUNT' | translate }}
+        </label>
+        <input id="amount"
+               name="amount"
+               type="number"
+               class="form-control"
+               ng-model="vm.income.amount"
+               readonly/>
     </div>
     <!-- /.form-group.col-md-6 -->
 
     <div class="form-group col-md-6">
-        <label for="companyName">From company</label>
-        <company-select id="companyName" name="companyName" ng-model="vm.income.companyName"></company-select>
+        <label for="companyName">
+            {{ 'INCOME_DOCUMENTS.FORM.FIELDS.COMPANY' | translate }}
+        </label>
+        <company-select id="companyName"
+                        name="companyName"
+                        ng-model="vm.income.companyName">
+        </company-select>
     </div>
     <!-- /.form-group.col-md-6 -->
 
     <div class="form-group col-md-6">
-        <label for="account">Account</label>
-        <account-select id="account" name="account" ng-model="vm.income.account"></account-select>
+        <label for="account">
+            {{ 'INCOME_DOCUMENTS.FORM.FIELDS.ACCOUNT' | translate }}
+        </label>
+        <account-select id="account"
+                        name="account"
+                        ng-model="vm.income.account">
+        </account-select>
     </div>
     <!-- /.form-group.col-md-6 -->
 
     <div class="form-group col-md-12">
-        <label for="description">Description</label>
-        <input id="description" name="description" type="text" class="form-control" ng-model="vm.income.description"/>
+        <label for="description">
+            {{ 'INCOME_DOCUMENTS.FORM.FIELDS.DESCRIPTION' | translate }}
+        </label>
+        <input id="description"
+               name="description"
+               type="text"
+               class="form-control"
+               ng-model="vm.income.description"/>
     </div>
     <!-- /.form-group.col-md-12 -->
 
     <div class="col-md-12">
         <h3>
-            Details
-            <a href="javascript:;" class="btn btn-default btn-sm" style="float: right" ng-click="vm.addRow()">
-                <i class="fa fa-plus" aria-hidden="true"></i> Add
+            {{ 'INCOME_DOCUMENTS.FORM.CONTENT_LIST.TITLE' | translate }}
+            <a href="javascript:;"
+               class="btn btn-default btn-sm"
+               style="float: right" ng-click="vm.addRow()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                {{ 'INCOME_DOCUMENTS.FORM.CONTENT_LIST.ACTIONS.ADD' | translate }}
             </a>
         </h3>
 
@@ -46,14 +85,22 @@
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
-                    <th>Product</th>
-                    <th>Amount</th>
+                    <th>
+                        {{ 'INCOME_DOCUMENTS.FORM.CONTENT_LIST.HEADERS.PRODUCT_NAME' | translate }}
+                    </th>
+                    <th>
+                        {{ 'INCOME_DOCUMENTS.FORM.CONTENT_LIST.HEADERS.AMOUNT' | translate }}
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="incomeDocumentRow in vm.income.rows">
-                    <td>{{incomeDocumentRow.productName}}</td>
-                    <td>{{incomeDocumentRow.amount}}</td>
+                    <td>
+                        {{incomeDocumentRow.productName}}
+                    </td>
+                    <td>
+                        {{incomeDocumentRow.amount}}
+                    </td>
                 </tr>
                 </tbody>
             </table>

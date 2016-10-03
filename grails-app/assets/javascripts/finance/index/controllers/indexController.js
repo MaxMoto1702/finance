@@ -7,6 +7,8 @@ angular
 function IndexController(applicationDataFactory, contextPath, $state) {
     var vm = this;
 
+    vm.test = "It's work!";
+
     vm.contextPath = contextPath;
 
     applicationDataFactory.get().then(function (response) {

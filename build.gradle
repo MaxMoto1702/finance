@@ -13,7 +13,7 @@ buildscript {
     }
 }
 
-version "0.1.1"
+version "0.2.0-SNAPSHOT"
 group "finance"
 
 apply plugin:"eclipse"
@@ -114,6 +114,9 @@ clientDependencies {
 //            include 'fonts/fontawesome-webfont.eot'
 //            include 'fonts/fontawesome-webfont.eot'
 //            include 'fonts/fontawesome-webfont.eot'
+        }
+        'angular-translate'('2.12.1', into: 'angular') {
+            include 'angular-translate.js'
         }
     }
 }

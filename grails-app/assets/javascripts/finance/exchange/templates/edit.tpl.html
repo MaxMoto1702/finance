@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header hidden-xs">
-                Exchange  Document
-                <small>edit</small>
+                {{ 'EXCHANGE_DOCUMENTS.EDIT.TITLE' | translate }}
+                <small>{{ 'EXCHANGE_DOCUMENTS.EDIT.SUB_TITLE' | translate }}</small>
             </h1>
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> <a ui-sref="exchange.list">Exchange Documents</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> Edit
-                </li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+                <!--<li>-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="dashboard">Dashboard</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> <a ui-sref="exchange.list">Exchange Documents</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<i class="fa fa-file"></i> Edit-->
+                <!--</li>-->
+            <!--</ol>-->
             <!--/.breadcrumb-->
 
         </div>
@@ -38,12 +38,20 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form name="updateExchange" ng-submit="vm.updateExchange()">
+            <form name="updateExchange"
+                  ng-submit="vm.updateExchange()">
                 <ng-include src="'/finance/exchange/form.html'"></ng-include>
                 <!--<div class="panel panel-default">-->
                 <!--<div class="panel-body">-->
-                <button type="submit" name="update" class="btn btn-primary">Save</button>
-                <a ui-sref="exchange.list" class="btn btn-default">Cancel</a>
+                <button type="submit"
+                        name="update"
+                        class="btn btn-primary">
+                    {{ 'EXCHANGE_DOCUMENTS.EDIT.ACTIONS.SAVE' | translate }}
+                </button>
+                <a ui-sref="exchange.list"
+                   class="btn btn-default">
+                    {{ 'EXCHANGE_DOCUMENTS.EDIT.ACTIONS.CANCEL' | translate }}
+                </a>
                 <!--</div>-->
                 <!-- /.panel-body -->
 

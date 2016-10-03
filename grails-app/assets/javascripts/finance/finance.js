@@ -2,6 +2,7 @@
 //= require /angular/angular
 //= require /angular/ui-bootstrap-tpls
 //= require /finance/core/finance.core
+//= require /finance/l10n/finance.l10n
 //= require /finance/index/finance.index
 //= require /finance/dashboard/finance.dashboard
 //= require /finance/account/finance.account
@@ -15,6 +16,7 @@
 
 angular.module("finance", [
     "finance.core",
+    "finance.l10n",
     "finance.index",
     "finance.dashboard",
     "finance.account",
