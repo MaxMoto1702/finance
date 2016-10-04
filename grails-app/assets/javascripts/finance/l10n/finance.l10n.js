@@ -1,5 +1,6 @@
 //= wrapped
 //= require /angular/angular-translate
+//= require_self
 //= require_tree translations
 
 angular.module('finance.l10n', ['pascalprecht.translate'])
@@ -16,6 +17,5 @@ function translateConfig($translateProvider) {
     // add translation table
     $translateProvider
         .translations('en_US', translations)
-        .translations('ru_RU', ru_RU)
         .preferredLanguage('ru_RU');
 }

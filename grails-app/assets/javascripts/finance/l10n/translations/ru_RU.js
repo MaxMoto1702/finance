@@ -1,3 +1,5 @@
+//= wrapped
+
 var ru_RU = {
     HEADLINE: 'Заголовок',
     PARAGRAPH: 'Параграф',
@@ -420,3 +422,11 @@ var ru_RU = {
         }
     }
 };
+
+angular.module('finance.l10n')
+    .config(ruConfig);
+
+function ruConfig($translateProvider) {
+    $translateProvider
+        .translations('ru_RU', ru_RU);
+}
