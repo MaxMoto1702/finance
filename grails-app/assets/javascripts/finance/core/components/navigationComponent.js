@@ -6,9 +6,4 @@ angular.module('finance.core')
         controller: 'NavigationController',
         controllerAs: 'vm',
         bindings: {}
-    })
-    .controller('NavigationController', NavigationController);
-
-function NavigationController() {
-    var vm = this;
-}
+    });
